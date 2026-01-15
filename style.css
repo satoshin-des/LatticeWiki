@@ -146,3 +146,72 @@ blockquote {
     font-size: 11px;
     color: #72777d;
 }
+
+/* 定理・命題の共通ベース */
+.math-block {
+    margin: 2em 0;
+    padding: 1.2em 1.5em;
+    border-radius: 4px;
+    border-left: 5px solid;
+    background-color: #f8f9fa;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.math-block:hover {
+    transform: translateX(5px);
+    /* わずかに動くことで注目を促す */
+}
+
+/* 種類別の色設定 */
+.theorem {
+    border-left-color: #36c;
+    /* Wikipediaブルー */
+    background-color: #f0f4f8;
+}
+
+.proposition {
+    border-left-color: #00af89;
+    /* 緑系 */
+    background-color: #f1fcf9;
+}
+
+.lemma {
+    border-left-color: #ac6600;
+    /* 茶・オレンジ系 */
+    background-color: #fffaf0;
+}
+
+/* ラベル部分の装飾 */
+.math-label {
+    font-weight: bold;
+    font-family: var(--wiki-font-sans);
+    margin-bottom: 0.5em;
+    display: block;
+    font-size: 0.95em;
+    color: #202122;
+}
+
+/* 証明 (Proof) 用スタイル */
+.proof {
+    margin: 1em 0;
+    padding: 10px 20px;
+    border-left: 3px double #a2a9b1;
+    font-style: normal;
+    font-size: 0.95em;
+    background-color: white;
+}
+
+.proof::before {
+    content: "証明.";
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+.proof::after {
+    content: "□";
+    /* 証明終了記号 */
+    float: right;
+    color: var(--wiki-border-color);
+}

@@ -15,18 +15,64 @@
     <header></header>
     <script src="header.js"></script>
     <script src="macros.js"></script>
+    <article class="wiki-content">
+        <h1>ポテンシャル</h1>
+        <p>格子基底の<b>ポテンシャル</b>は，格子基底の品質を表す指標の一つである．</p>
 
-    <h1>ポテンシャル</h1>
-    <p>格子基底の<b>ポテンシャル</b>は，格子基底の品質を表す指標の一つである．</p>
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li>1. 定義</li>
+                <li>2. 性質</li>
+            </ul>
+        </div>
 
-    <h2>定義</h2>
-    <p>
-        \(n\)次元格子\(L\)の基底\(\lbrace\mathbf{b}_1, \ldots, \mathbf{b}_n\rbrace\)に対して，基底のポテンシャルは
-        $$\Pot{\mathbf{b}_1, \ldots, \mathbf{b}_n}=\prod_{i=1}^n \mathrm{vol}(L_i)$$
-        と定義される．但し，\(L_i\)は\(\lbrace\mathbf{b}_1, \ldots, \mathbf{b}_i\rbrace\)を基底に持つ\(L\)の部分格子である．
-    </p>
+        <h2>定義</h2>
+        <p>
+            \(n\)次元格子\(L\)の基底\(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)に対して，基底の<b>ポテンシャル</b>は
+            $$\Pot{\bm{b}_1, \ldots, \bm{b}_n}=\prod_{i=1}^n \mathrm{vol}(L_i)^2$$
+            と定義される．但し，\(L_i\)は\(\lbrace\bm{b}_1, \ldots, \bm{b}_i\rbrace\)を基底に持つ\(L\)の部分格子である．
+        </p>
+        <p>
+            \(L_i\)の基底\(\lbrace\bm{b}_1, \ldots, \bm{b}_i\rbrace\)のGSOベクトルは\(\bm{b}_1^\star, \ldots,
+            \bm{b}_i^\star\)であるため，\(L_i\)の体積は
+            $$\vol{L}=\prod_{j=1}^i \norm{\bm{b}_j^\star}$$
+            と書ける．従って，基底のポテンシャルは以下の様に書き換えることができる：
+            $$\Pot{\bm{b}_1, \ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i \norm{\bm{b}_j}^2=\prod_{j=1}
+            \norm{\bm{b}_j}^{2(n-j+1)}$$
+        </p>
 
-    <h2>記事一覧</h2>
+        <h2>性質</h2>
+
+        <h3>GSAスロープの傾きとの関係</h3>
+
+        <p>
+            GSAスロープの傾きもポテンシャル同様，格子基底の品質を表す指標の一つである．
+            GSAスロープの傾きと基底のポテンシャルとの間には，次の関係が成立することが知られている．
+        </p>
+        <div class="math-block theorem">
+            <span class="math-label">定理 1</span>
+            <p>
+                \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)を\(n\)次元格子\(L\)の基底とする．このとき，
+                $$\log \Pot{\bm{b}_1, \ldots, \bm{b}_n}+\binom{n+1}{3}\slope{\bm{b}_1, \ldots, \bm{b}_n}=(n+1)\log
+                \vol{L}$$
+                が成立する．
+            </p>
+        </div>
+        <div class="proof">
+            <p>
+                \(\bm{b}_1^\star,\ldots, \bm{b}_n^\star\)を\(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)のGSOベクトルとする．
+                定義から
+                $$
+                \begin{aligned}
+                \log \Pot{\bm{b}_1, \ldots, \bm{b}_n}&=\log \prod_{i=1}^n \norm{\bm{b}_i^\star}^{2(n-i+1)}\\
+                &=2\sum_{i=1}^n (n-i+1)\log \norm{\bm{b}_i^\star}
+                \end{aligned}
+                $$
+            </p>
+        </div>
+    </article>
+
     <script src="script.js"></script>
 </body>
 
