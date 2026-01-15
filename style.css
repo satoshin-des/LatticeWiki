@@ -1,0 +1,148 @@
+/* --- Wikipedia Modern Base Styles --- */
+:root {
+    --wiki-font-serif: 'Linux Libertine', 'Georgia', 'Times', serif;
+    --wiki-font-sans: sans-serif;
+    --wiki-link-color: #36c;
+    --wiki-border-color: #a2a9b1;
+    --wiki-bg-gray: #f8f9fa;
+    --wiki-text-main: #202122;
+}
+
+body {
+    background-color: #ffffff;
+    color: var(--wiki-text-main);
+    font-family: var(--wiki-font-sans);
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px;
+    /* 余白を広めに取るのがWiki風 */
+    max-width: 960px;
+    /* 読みやすい横幅 */
+}
+
+/* タイトル (h1) */
+h1 {
+    font-family: var(--wiki-font-serif);
+    font-size: 1.8rem;
+    font-weight: normal;
+    border-bottom: 1px solid var(--wiki-border-color);
+    margin-bottom: 0.25em;
+    padding-bottom: 0.17em;
+    animation: slideInLeft 0.5s ease-out;
+    /* 控えめな出現アニメーション */
+}
+
+/* セクション見出し (h2) */
+h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--wiki-border-color);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+/* 本文 (p) */
+p {
+    margin: 0.5em 0 1em 0;
+    text-align: justify;
+    /* 両端揃えで百科事典感を演出 */
+}
+
+/* リンク */
+a {
+    color: var(--wiki-link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 引用・脚注風 (blockquote) */
+blockquote {
+    background: var(--wiki-bg-gray);
+    border-left: 4px solid var(--wiki-border-color);
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    font-style: italic;
+}
+
+/* 目次風ボックス (class名 .wiki-toc を想定) */
+.wiki-toc {
+    background: var(--wiki-bg-gray);
+    border: 1px solid var(--wiki-border-color);
+    display: table;
+    padding: 10px 20px;
+    font-size: 0.9em;
+    margin-bottom: 1.5em;
+    border-radius: 2px;
+}
+
+/* --- アニメーション --- */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* スクロール時のフェードイン（JSと連携） */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 検索バーを横並びに */
+.search-row {
+    display: flex;
+    gap: 5px;
+}
+
+#wiki-search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+}
+
+#search-button {
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+#search-button:hover {
+    background-color: #ffffff;
+}
+
+/* 検索結果のドロップダウンをリッチに */
+.search-results-dropdown div {
+    padding: 12px;
+    border-bottom: 1px solid #eaecf0;
+}
+
+.search-results-dropdown .result-title {
+    font-weight: bold;
+    display: block;
+    color: var(--wiki-link-color);
+}
+
+.search-results-dropdown .result-url {
+    font-size: 11px;
+    color: #72777d;
+}
