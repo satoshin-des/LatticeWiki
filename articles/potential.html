@@ -216,7 +216,7 @@
         は\(\langle \bm{b}_1, \dots, \bm{b}_{\ell-1} \rangle_\mathbb{R}\)の直交補空間への直交射影とする．<br>
         \(1\le i\le n\)に対して，\(B_i:=\norm{\bm{b}_i^\star}^2\)，\(X:=\max_{1\le i\le n}B_i\)とおく．
         $$
-        \Pot{\bm{b}_1,\ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i B_j\le X^{\frac{n(n+1)}{2}}
+        0<\Pot{\bm{b}_1,\ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i B_j\le X^{\frac{n(n+1)}{2}}
         $$
         が成立する．
         サイズ基底簡約によってGSOベクトルは変化しないため，基底ベクトルの交換によるポテンシャルの値の変化を考える．
@@ -247,10 +247,16 @@
         <div class="scroll-container">
             $$
             \begin{aligned}
-            \Pot(\bm{c}_1,\ldots, \bm{c}_n)&=\prod_{j=1}^i B_j^{n-j+1}\times \prod_{j=i+2}^n B_j^{n-j+1}
+            \Pot{\bm{c}_1,\ldots, \bm{c}_n}&=\prod_{j=1}^{i-1} B_j^{n-j+1}\times C_i^{i}\times C_{i+1}^{i+1}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
+            &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times {\norm{\pi_{i}(\bm{b}_{i+1})}^{2i}}\times \frac{B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2(i+1)}}B_i^{i+1}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
+            &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times \frac{B_i^{i+1}B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
+            &=\frac{B_i}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}} \prod_{j=1}^n B_j^{n-j+1}\\
+            &< \delta \Pot{\bm{b}_1,\ldots, \bm{b}_n}
             \end{aligned}
             $$
         </div>
+        となる．
+        即ち，基底のポテンシャルはLovász条件を満足しない基底の入れ替えによって少なくとも\(\delta\)倍ずつ単調減少するため有限回で停止する．
         </p>
 
         <section class="wiki-references-section">
