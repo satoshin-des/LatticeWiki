@@ -50,38 +50,68 @@
             GSAスロープの傾きもポテンシャル同様，格子基底の品質を表す指標の一つである．
             GSAスロープの傾きと基底のポテンシャルとの間には，次の関係が成立することが知られている．
         </p>
-        <div class="math-block theorem">
-            <span class="math-label">定理 1</span>
-            <p>
-                \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)を\(n\)次元格子\(L\)の基底とする．このとき，
-                $$\log \Pot{\bm{b}_1, \ldots, \bm{b}_n}+\binom{n+1}{3}\slope{\bm{b}_1, \ldots, \bm{b}_n}=(n+1)\log
-                \vol{L}$$
-                が成立する．
-            </p>
+        <div class="scroll-container">
+            <div class="math-block theorem">
+                <span class="math-label">定理 1</span>
+                <p>
+                    \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)を\(n\)次元格子\(L\)の基底とする．このとき，
+                    $$\log \Pot{\bm{b}_1, \ldots, \bm{b}_n}+\binom{n+1}{3}\slope{\bm{b}_1, \ldots, \bm{b}_n}=(n+1)\log
+                    \vol{L}$$
+                    が成立する．
+                </p>
+            </div>
         </div>
         <div class="proof">
             <p>
                 \(\bm{b}_1^\star,\ldots, \bm{b}_n^\star\)を\(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)のGSOベクトルとする．
                 定義から
+            <div class="scroll-container">
                 $$
                 \begin{aligned}
-                    \log \Pot{\bm{b}_1, \ldots, \bm{b}_n}&=\log \prod_{i=1}^n \norm{\bm{b}_i^\star}^{2(n-i+1)}\\
-                    &=2\sum_{i=1}^n (n-i+1)\log \norm{\bm{b}_i^\star}\\
-                    &=2(n+1)\sum_{i=1}^n \log \norm{\bm{b}_i^\star}-2i\sum_{i=1}^n i\log \norm{\bm{b}_i^\star}
+                \log \Pot{\bm{b}_1, \ldots, \bm{b}_n}&=\log \prod_{i=1}^n \norm{\bm{b}_i^\star}^{2(n-i+1)}\\
+                &=2\sum_{i=1}^n (n-i+1)\log \norm{\bm{b}_i^\star}\\
+                &=2(n+1)\sum_{i=1}^n \log \norm{\bm{b}_i^\star}-2\sum_{i=1}^n i\log \norm{\bm{b}_i^\star}\\
+                &=2(n+1) \log\vol{L}-2\sum_{i=1}^n i\log \norm{\bm{b}_i^\star}
                 \end{aligned}
                 $$
-                がわかる．
-                更に，GSAスロープの傾きの定義から
+            </div>
+            がわかる．
+            更に，GSAスロープの傾きの定義から
+            <div class="scroll-container">
                 $$
                 \begin{aligned}
-                    \slope{\bm{b}_1,\ldots,\bm{b}_n}&=\frac{3}{n(n^2-1)}\log \prod_{i=1}^n \prod_{j=1}^i \frac{\norm{\bm{b}_i^\star}^2}{\norm{\bm{b}_j^\star}^2}\\
-                    &=\frac{6}{n(n^2-1)}\sum_{i=1}^n \sum_{j=1}^i \log \frac{\norm{\bm{b}_i^\star}^2}{\norm{\bm{b}_j^\star}^2}\\
-                    &=\frac{6}{n(n^2-1)}
+                \slope{\bm{b}_1,\ldots,\bm{b}_n}&=\frac{3}{n(n^2-1)}\log \prod_{i=1}^n \prod_{j=1}^i
+                \frac{\norm{\bm{b}_i^\star}^2}{\norm{\bm{b}_j^\star}^2}\\
+                &=\frac{6}{n(n^2-1)}\sum_{i=1}^n \sum_{j=1}^i \log
+                \frac{\norm{\bm{b}_i^\star}^2}{\norm{\bm{b}_j^\star}^2}\\
+                &=\frac{6}{n(n^2-1)}\left(\sum_{i=1}^n i\log \norm{\bm{b}_i^\star}-\sum_{i=1}^n \sum_{j=1}^i \log
+                \norm{\bm{b}_j^\star}\right)\\
+                &=\frac{6}{n(n^2-1)}\sum_{i=1}^n i\log \norm{\bm{b}_i^\star}-\frac{3}{n(n^2-1)}\log
+                \Pot{\bm{b}_1,\ldots,\bm{b}_n}
                 \end{aligned}
                 $$
+            </div>
+            がわかる．
+            従って，
+            <div class="scroll-container">
+                $$
+                \begin{aligned}
+                &\frac{n(n^2-1)}{6}\slope{\bm{b}_1,\ldots,\bm{b}_n}=\sum_{i=1}^n i\log
+                \norm{\bm{b}_i^\star}-\frac{1}{2}\log \Pot{\bm{b}_1,\ldots,\bm{b}_n}\\
+                \iff& \binom{n+1}{3}\slope{\bm{b}_1,\ldots,\bm{b}_n}=(n+1)\log \vol{L}-\log
+                \Pot{\bm{b}_1,\ldots,\bm{b}_n}\\
+                \iff&\log \Pot{\bm{b}_1, \ldots, \bm{b}_n}+\binom{n+1}{3}\slope{\bm{b}_1, \ldots, \bm{b}_n}=(n+1)\log
+                \vol{L}
+                \end{aligned}
+                $$
+            </div>
+            となる．
             </p>
         </div>
     </article>
+
+    <footer></footer>
+    <script src="../footer.js"></script>
 
     <script src="../macros.js"></script>
     <script src="../script.js"></script>

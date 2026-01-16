@@ -215,3 +215,22 @@ blockquote {
     float: right;
     color: var(--wiki-border-color);
 }
+
+
+/* 横スクロールを許可するコンテナ */
+.scroll-container {
+    width: 100%;
+    overflow-x: auto; /* 横方向に溢れたらスクロールを出す */
+    -webkit-overflow-scrolling: touch; /* iOSでのスクロールを滑らかにする */
+    margin: 20px 0;
+    /* スクロールバーのデザイン（任意） */
+    scrollbar-width: thin;
+    scrollbar-color: #333333 rgba(255, 255, 255, 0.1);
+}
+
+/* 数式や表が勝手に改行されないようにする */
+.scroll-container table,
+.scroll-container .math-display {
+    min-width: 100%; /* 最低でも幅100% */
+    white-space: nowrap; /* テキストの勝手な改行を防ぐ */
+}
