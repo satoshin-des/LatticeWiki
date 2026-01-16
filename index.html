@@ -12,7 +12,14 @@
 
 <body>
     <header></header>
-    <script src="header.js"></script>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
 
     <h1>格子Wikiへようこそ</h1>
     <h2>これは何？</h2>
@@ -20,6 +27,7 @@
 
     <h2>記事一覧</h2>
     <script src="script.js"></script>
+    <script src="search.js"></script>
 </body>
 
 </html>

@@ -321,32 +321,37 @@ blockquote {
 .wiki-references-section {
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid #a2a9b1; /* 区切り線 */
+    border-top: 1px solid #a2a9b1;
+    /* 区切り線 */
 }
 
 .wiki-references-section h2 {
     font-size: 1.2rem;
     margin-bottom: 15px;
-    border-bottom: none; /* 通常の見出しの線を消す */
+    border-bottom: none;
+    /* 通常の見出しの線を消す */
 }
 
 /* 参考文献リスト（数字付きリスト） */
 .wiki-references-list {
-    font-size: 0.85rem; /* 本文より少し小さく */
+    font-size: 0.85rem;
+    /* 本文より少し小さく */
     line-height: 1.5;
     color: #202122;
     padding-left: 20px;
-    
+
     /* 画面幅が十分あるときは2列表示にする */
-    column-count: 2; 
-    column-gap: 30px; 
-    column-rule: 1px solid #eaecf0; /* 列の間に薄い線 */
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid #eaecf0;
+    /* 列の間に薄い線 */
 }
 
 /* リストアイテム */
 .wiki-references-list li {
     margin-bottom: 8px;
-    break-inside: avoid; /* 列の途中で改行されないように */
+    break-inside: avoid;
+    /* 列の途中で改行されないように */
     padding: 2px 5px;
     border-radius: 2px;
     transition: background-color 0.5s ease;
@@ -354,14 +359,16 @@ blockquote {
 
 /* URLが長い場合に枠からはみ出さないようにする */
 .wiki-references-list li a {
-    word-break: break-all; 
+    word-break: break-all;
 }
 
 /* リンク先（ジャンプした後）のハイライト演出 */
 /* 本文の[1]をクリックして飛んできた時に、該当行を青く光らせる */
 .wiki-references-list li:target {
-    background-color: #eaf3ff; /* 薄い青 */
-    border: 1px solid #36c; /* 枠線 */
+    background-color: #eaf3ff;
+    /* 薄い青 */
+    border: 1px solid #36c;
+    /* 枠線 */
     outline: none;
 }
 
@@ -387,4 +394,68 @@ footer {
     padding: 60px;
     font-size: 0.8rem;
     border-top: 1px solid var(--grid-line-color);
+}
+
+/* 外枠 */
+.search-wrapper {
+    position: relative;
+    width: 350px;
+    /* ボタン分少し広げました */
+}
+
+/* 入力欄とボタンを横並びにする */
+.search-input-group {
+    display: flex;
+    gap: 5px;
+    /* 入力欄とボタンの間隔 */
+}
+
+/* 入力欄 */
+#wiki-search-input {
+    flex: 1;
+    /* 余ったスペースを埋める */
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* 検索ボタン（Wiki風） */
+#wiki-search-button {
+    padding: 8px 16px;
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 2px;
+}
+
+#wiki-search-button:hover {
+    background-color: #ffffff;
+    border-color: #a2a9b1;
+}
+
+/* 検索結果リスト（変更なし） */
+#search-results-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background-color: #eaf3ff;
 }
