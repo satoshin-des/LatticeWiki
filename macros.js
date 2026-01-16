@@ -6,7 +6,9 @@ window.MathJax = {
             Pot: ["{\\mathrm{Pot}(#1)}", 1],
             vol: ["{\\mathrm{vol}(#1)}", 1],
             slope: ["{\\mathrm{sl}(#1)}", 1],
-            Z: ["{\\mathbb{Z}}"]
+            Z: ["{\\mathbb{Z}}"],
+            inner: ["{\\left\\langle{#1}\\right\\rangle}", 1],
+            det: ["{\\mathrm{det}}"]
         }
     }
 };

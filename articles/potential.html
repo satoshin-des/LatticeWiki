@@ -19,14 +19,18 @@
         <h1>ポテンシャル</h1>
         <p>
             格子基底の<b>ポテンシャル</b>は，格子基底の品質を表す指標の一つである．
-            元は，LLL基底簡約アルゴリズムの停止性を証明するために導入された量である．
+            元は，LLL基底簡約アルゴリズムの停止性を証明するために導入された量である
+            <sup id="cite_ref-2" class="reference">
+                <a href="#ref-2">[2]</a>
+            </sup>
+            ．
         </p>
 
         <div class="wiki-toc">
             <strong>目次</strong>
             <ul>
-                <li>1. <a href="#definition">定義</a></li>
-                <li>2. <a href="#property">性質</a></li>
+                <li><a href="#definition">定義</a></li>
+                <li><a href="#property">性質</a></li>
                 <li><a href="#example">具体例</a></li>
                 <li><a href="#reference">参考文献</a></li>
             </ul>
@@ -123,7 +127,7 @@
             </div>
         </details>
 
-        <h3>ポテンシャルが整数となる条件</h3>
+        <h3>ポテンシャルが整数となる十分条件</h3>
 
         <div class="scroll-container">
             <div class="math-block theorem">
@@ -138,7 +142,17 @@
             <summary>証明</summary>
             <div class="proof">
                 <p>
-
+                    仮定から，任意の\(1\le i, j\le n\)に対して\(\inner{\bm{b}_i, \bm{b}_j}\in \Z\)が成立する．
+                    従って，格子の体積の定義から，任意の\(1\le i\le n\)に対して
+                    $$
+                    \vol{L_i}^2=\left(\det \begin{bmatrix}
+                    \inner{\bm{b}_1, \bm{b}_1} & \cdots & \inner{\bm{b}_1, \bm{b}_i}\\
+                    \vdots & \ddots & \vdots\\
+                    \inner{\bm{b}_i, \bm{b}_1} & \cdots & \inner{\bm{b}_i, \bm{b}_i}
+                    \end{bmatrix}\right)^2\in \Z
+                    $$
+                    が成立する．
+                    従って，ポテンシャルは整数である．
                 </p>
             </div>
         </details>
@@ -166,7 +180,7 @@
         従って，
         $$
         \begin{aligned}
-        \Pot(\bm{B})&=\prod_{j=1}\norm{\bm{b}_j}^{2(n-j+1)}\\
+        \Pot{\bm{B}}&=\prod_{j=1}\norm{\bm{b}_j}^{2(n-j+1)}\\
         &=100^{6}\times 1 \times 1=10^{12}
         \end{aligned}
         $$
@@ -185,11 +199,17 @@
                     </span>
                     <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
                 </li>
+                <li id="ref-2">
+                    <span class="reference-text">
+                        A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
+                        <i>Factoring polynomials with rational coefficients</i>.
+                        Mathematische Annalen.
+                        doi: 10.1007/BF01457454
+                    </span>
+                    <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                </li>
             </ol>
         </section>
-
-
-
     </article>
 
     <footer></footer>
