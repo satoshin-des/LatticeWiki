@@ -7,8 +7,10 @@ window.MathJax = {
             vol: ["{\\mathrm{vol}(#1)}", 1],
             slope: ["{\\mathrm{sl}(#1)}", 1],
             Z: ["{\\mathbb{Z}}"],
+            R: ["{\\mathbb{R}}"],
             inner: ["{\\left\\langle{#1}\\right\\rangle}", 1],
-            det: ["{\\mathrm{det}}"]
+            det: ["{\\mathrm{det}}"],
+            abs: ["{\\left|{#1}\\right|}", 1]
         }
     }
 };
