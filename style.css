@@ -204,7 +204,7 @@ blockquote {
 }
 
 .proof::before {
-    content: "証明.";
+    /*content: "証明.";*/
     font-weight: bold;
     margin-right: 0.5em;
 }
@@ -220,8 +220,10 @@ blockquote {
 /* 横スクロールを許可するコンテナ */
 .scroll-container {
     width: 100%;
-    overflow-x: auto; /* 横方向に溢れたらスクロールを出す */
-    -webkit-overflow-scrolling: touch; /* iOSでのスクロールを滑らかにする */
+    overflow-x: auto;
+    /* 横方向に溢れたらスクロールを出す */
+    -webkit-overflow-scrolling: touch;
+    /* iOSでのスクロールを滑らかにする */
     margin: 20px 0;
     /* スクロールバーのデザイン（任意） */
     scrollbar-width: thin;
@@ -231,6 +233,151 @@ blockquote {
 /* 数式や表が勝手に改行されないようにする */
 .scroll-container table,
 .scroll-container .math-display {
-    min-width: 100%; /* 最低でも幅100% */
-    white-space: nowrap; /* テキストの勝手な改行を防ぐ */
+    min-width: 100%;
+    /* 最低でも幅100% */
+    white-space: nowrap;
+    /* テキストの勝手な改行を防ぐ */
+}
+
+/* --- 証明（折りたたみ）スタイル --- */
+.wiki-proof {
+    margin: 1em 0;
+    border: 1px solid #a2a9b1;
+    /* Wikiっぽいグレー枠 */
+    background-color: #fff;
+    border-radius: 2px;
+    overflow: hidden;
+    /* 角丸からはみ出さないように */
+}
+
+/* クリックするバーの部分 */
+.wiki-proof summary {
+    background-color: #eaecf0;
+    /* 薄いグレー */
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    /* デフォルトの黒い三角を消す */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+    user-select: none;
+    /* 文字選択されないように */
+}
+
+.wiki-proof summary:hover {
+    background-color: #ddeecc;
+    /* ホバー時に少し緑っぽく（Wiki風） */
+}
+
+/* デフォルトのマーカーを消す（Chrome/Safari用） */
+.wiki-proof summary::-webkit-details-marker {
+    display: none;
+}
+
+/* 右側の矢印アイコン（+ / -） */
+.wiki-proof summary::after {
+    content: "＋";
+    /* 閉じている時 */
+    font-size: 12px;
+    color: #555;
+    margin-left: 10px;
+}
+
+/* 開いている時のスタイル */
+.wiki-proof[open] summary {
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.wiki-proof[open] summary::after {
+    content: "－";
+    /* 開いている時 */
+}
+
+/* 中身のコンテンツエリア */
+.proof-content {
+    padding: 15px;
+    background-color: #f8f9fa;
+    /* わずかに背景色を変える */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 展開時のふわっと表示アニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 参考文献セクション全体 --- */
+.wiki-references-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #a2a9b1; /* 区切り線 */
+}
+
+.wiki-references-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: none; /* 通常の見出しの線を消す */
+}
+
+/* 参考文献リスト（数字付きリスト） */
+.wiki-references-list {
+    font-size: 0.85rem; /* 本文より少し小さく */
+    line-height: 1.5;
+    color: #202122;
+    padding-left: 20px;
+    
+    /* 画面幅が十分あるときは2列表示にする */
+    column-count: 2; 
+    column-gap: 30px; 
+    column-rule: 1px solid #eaecf0; /* 列の間に薄い線 */
+}
+
+/* リストアイテム */
+.wiki-references-list li {
+    margin-bottom: 8px;
+    break-inside: avoid; /* 列の途中で改行されないように */
+    padding: 2px 5px;
+    border-radius: 2px;
+    transition: background-color 0.5s ease;
+}
+
+/* URLが長い場合に枠からはみ出さないようにする */
+.wiki-references-list li a {
+    word-break: break-all; 
+}
+
+/* リンク先（ジャンプした後）のハイライト演出 */
+/* 本文の[1]をクリックして飛んできた時に、該当行を青く光らせる */
+.wiki-references-list li:target {
+    background-color: #eaf3ff; /* 薄い青 */
+    border: 1px solid #36c; /* 枠線 */
+    outline: none;
+}
+
+/* 戻るボタン（^）のデザイン */
+.back-to-text {
+    user-select: none;
+    font-size: 0.8em;
+    color: var(--wiki-link-color);
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+/* スマホ対応：画面が狭いときは1列に戻す */
+@media (max-width: 600px) {
+    .wiki-references-list {
+        column-count: 1;
+        column-rule: none;
+    }
 }
