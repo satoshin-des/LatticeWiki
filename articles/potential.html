@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ポテンシャル</title>
     <style>
-        @import url(style.css);
+        @import url(../style.css);
     </style>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
     <header></header>
-    <script src="header.js"></script>
-    <script src="macros.js"></script>
+    <script src="../header.js"></script>
+    <script src="../macros.js"></script>
     <article class="wiki-content">
         <h1>ポテンシャル</h1>
         <p>格子基底の<b>ポテンシャル</b>は，格子基底の品質を表す指標の一つである．</p>
@@ -65,15 +65,26 @@
                 定義から
                 $$
                 \begin{aligned}
-                \log \Pot{\bm{b}_1, \ldots, \bm{b}_n}&=\log \prod_{i=1}^n \norm{\bm{b}_i^\star}^{2(n-i+1)}\\
-                &=2\sum_{i=1}^n (n-i+1)\log \norm{\bm{b}_i^\star}
+                    \log \Pot{\bm{b}_1, \ldots, \bm{b}_n}&=\log \prod_{i=1}^n \norm{\bm{b}_i^\star}^{2(n-i+1)}\\
+                    &=2\sum_{i=1}^n (n-i+1)\log \norm{\bm{b}_i^\star}\\
+                    &=2(n+1)\sum_{i=1}^n \log \norm{\bm{b}_i^\star}-2i\sum_{i=1}^n i\log \norm{\bm{b}_i^\star}
+                \end{aligned}
+                $$
+                がわかる．
+                更に，GSAスロープの傾きの定義から
+                $$
+                \begin{aligned}
+                    \slope{\bm{b}_1,\ldots,\bm{b}_n}&=\frac{3}{n(n^2-1)}\log \prod_{i=1}^n \prod_{j=1}^i \frac{\norm{\bm{b}_i^\star}^2}{\norm{\bm{b}_j^\star}^2}\\
+                    &=\frac{6}{n(n^2-1)}\sum_{i=1}^n \sum_{j=1}^i \log \frac{\norm{\bm{b}_i^\star}^2}{\norm{\bm{b}_j^\star}^2}\\
+                    &=\frac{6}{n(n^2-1)}
                 \end{aligned}
                 $$
             </p>
         </div>
     </article>
 
-    <script src="script.js"></script>
+    <script src="../macros.js"></script>
+    <script src="../script.js"></script>
 </body>
 
 </html>
