@@ -33,6 +33,7 @@
                 <li><a href="#definition">定義</a></li>
                 <li><a href="#property">性質</a></li>
                 <li><a href="#example">具体例</a></li>
+                <li><a href="#citation">参考文献</a></li>
             </ul>
         </div>
 
@@ -103,7 +104,7 @@
 
         <div class="scroll-container">
             <div class="math-block theorem">
-                <span class="math-label">定理（Hadamard）</span>
+                <span class="math-label">定理</span>
                 <p>
                     \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とし，\(\bm{b}_1^\star, \ldots,
                     \bm{b}_n^\star\)をそのGSOベクトルとする．
@@ -183,7 +184,7 @@
                 </div>
         </details>
 
-        <h3>Hadamardの不等式</h3>
+        <h2>Hadamardの不等式</h2>
 
         <div class="scroll-container">
             <div class="math-block theorem">
@@ -199,6 +200,30 @@
                 </p>
             </div>
         </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    異なるGSOベクトル同士は直交するので
+                    <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    \prod_{i=1}^n \norm{\bm{b}_i}^2&=\prod_{i=1}^n \norm{\bm{b}_i^\star+\sum_{j = 1}^{i-1} \mu_{i, j} \bm{b}_j^\star}^2\\
+                    &=\prod_{i=1}^n \left(\norm{\bm{b}_i}^2+\sum_{j=1}^{i-1}\mu_{i, j}^2 \norm{\bm{b}_j^\star}^2\right)\\
+                    &\ge \prod_{i=1}^n \norm{\bm{b}_i}^2=\vol{L}
+                    \end{aligned}
+                    $$
+                    </div>
+                    が成立する．
+                    従って，\(\vol{L}\ge 0\)なので
+                    $$
+                    \vol{L}\le \prod_{i=1}^n \norm{\bm{b}_i}
+                    $$
+                    を得る．
+                </p>
+            </div>
+        </details>
 
         <h2 id="example">具体例</h2>
 
@@ -226,7 +251,7 @@
             実は，\(\{\bm{b}_1,\bm{b}_2,\bm{b}_3\}\)，\(\{\bm{c}_1,\bm{c}_2,\bm{c}_3\}\)の双方の生成する格子は同じである．
         </p>
 
-        <h2>参考文献</h2>
+        <h2 id="citation">参考文献</h2>
         <ul>
             <li>
                 <span class="reference-text">
