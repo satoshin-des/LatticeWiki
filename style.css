@@ -459,3 +459,93 @@ footer {
 .search-result-item:hover {
     background-color: #eaf3ff;
 }
+
+/* --- ツールチップ（用語解説）のスタイル --- */
+
+/* 用語のベーススタイル */
+.wiki-term {
+    position: relative;
+    /* 吹き出しの基準位置 */
+    cursor: help;
+    /* カーソルを「?」マークにする */
+    border-bottom: 1px dotted #888;
+    /* 下に点線を引いて「何かある」と伝える */
+
+    font-weight: 500;
+    display: inline-block;
+    /* 挙動を安定させる */
+}
+
+/* 吹き出し本体（初期状態は非表示） */
+.wiki-term::before {
+    content: attr(data-desc);
+    /* HTMLのdata-descの中身を表示 */
+    position: absolute;
+    bottom: 100%;
+    /* 用語の上に配置 */
+    left: 50%;
+    /* 中央寄せの基準 */
+    transform: translateX(-50%) translateY(10px);
+    /* X軸中央寄せ + 少し下に配置（アニメーション開始位置） */
+
+    /* 見た目の装飾 */
+    background-color: #333;
+    /* 背景色（ダークグレー） */
+    color: #fff;
+    /* 文字色 */
+    padding: 8px 12px;
+    /* 内側の余白 */
+    border-radius: 4px;
+    /* 角丸 */
+    font-size: 12px;
+    /* 文字サイズ */
+    white-space: pre-wrap;
+    /* 改行を反映させる */
+    width: max-content;
+    /* 中身に合わせて幅調整 */
+    max-width: 250px;
+    /* 最大幅（長すぎ防止） */
+    line-height: 1.5;
+    text-align: left;
+    z-index: 1000;
+    /* 最前面に表示 */
+    pointer-events: none;
+    /* 吹き出し自体はクリックの邪魔をしない */
+
+    /* アニメーション設定 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* 吹き出しの下の小さな三角（矢印） */
+.wiki-term::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    /* 本体のすぐ下 */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    /* 本体と同じ動きをさせる */
+    border: 6px solid transparent;
+    border-top-color: #333;
+    /* 本体の色に合わせる */
+    margin-bottom: -10px;
+    /* 位置調整 */
+
+    /* アニメーション設定 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* --- ホバー時の動作（ふわっと出現） --- */
+.wiki-term:hover::before,
+.wiki-term:hover::after {
+    opacity: 1;
+    /* 見えるようにする */
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px);
+    /* 少し上に移動（浮き上がる演出） */
+}
