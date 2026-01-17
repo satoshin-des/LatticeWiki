@@ -1,7 +1,12 @@
 [
     {
         "title": "ポテンシャル",
-        "url": "articles/potential.html",
+        "url": "potential.html",
         "keywords": "ポテンシャル, potenital"
+    },
+    {
+        "title": "体積",
+        "url": "potential.html",
+        "keywords": "体積, volume，行列式，determinant"
     }
 ]

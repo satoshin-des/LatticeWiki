@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ポテンシャル</title>
     <style>
-        @import url(../style.css);
+        @import url(style.css);
     </style>
-    <script src="../macros.js"></script>
+    <script src="macros.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-    <header></header>
-    <script src="../header.js"></script>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
     <article class="wiki-content">
         <h1>ポテンシャル</h1>
         <p>
@@ -217,18 +223,13 @@
         は\(\langle \bm{b}_1, \dots, \bm{b}_{\ell-1} \rangle_\mathbb{R}\)の直交補空間への直交射影とする．<br>
         \(1\le i\le n\)に対して，\(B_i:=\norm{\bm{b}_i^\star}^2\)，\(X:=\max_{1\le i\le n}B_i\)とおく．
         $$
-        0<\Pot{\bm{b}_1,\ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i B_j\le X^{\frac{n(n+1)}{2}}
-        $$
-        が成立する．
-        サイズ基底簡約によってGSOベクトルは変化しないため，基底ベクトルの交換によるポテンシャルの値の変化を考える．
-        隣り合う基底ベクトル\(\bm{b}_{\ell-1}\)，\(\bm{b}_\ell\)の交換によって得られる新しい基底を\(\{\bm{c}_1,\ldots,\bm{c}_n\}\)とおく：
-        $$
-        \{\bm{c}_1,\ldots,\bm{c}_n\}:=\{\bm{b}_1,\ldots,\bm{b}_{\ell-2},\bm{b}_\ell, \bm{b}_{\ell-1},
-        \bm{b}_{\ell+1},\ldots,\bm{b}_n\}.
-        $$
-        新しい基底ベクトルのGSOベクトルを\(\bm{c}_1^\star,\ldots,\bm{c}_n^\star\)とし，その2乗ノルムを\(C_i=\norm{\bm{c}_i^\star}^2\)とおく．
-        このとき，次が成立することが知られている．
-        <div class="scroll-container">
+        0<\Pot{\bm{b}_1,\ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i B_j\le X^{\frac{n(n+1)}{2}} $$ が成立する．
+            サイズ基底簡約によってGSOベクトルは変化しないため，基底ベクトルの交換によるポテンシャルの値の変化を考える．
+            隣り合う基底ベクトル\(\bm{b}_{\ell-1}\)，\(\bm{b}_\ell\)の交換によって得られる新しい基底を\(\{\bm{c}_1,\ldots,\bm{c}_n\}\)とおく： $$
+            \{\bm{c}_1,\ldots,\bm{c}_n\}:=\{\bm{b}_1,\ldots,\bm{b}_{\ell-2},\bm{b}_\ell, \bm{b}_{\ell-1},
+            \bm{b}_{\ell+1},\ldots,\bm{b}_n\}. $$
+            新しい基底ベクトルのGSOベクトルを\(\bm{c}_1^\star,\ldots,\bm{c}_n^\star\)とし，その2乗ノルムを\(C_i=\norm{\bm{c}_i^\star}^2\)とおく．
+            このとき，次が成立することが知られている． <div class="scroll-container">
             <div class="math-block theorem">
                 <span class="math-label">定理</span>
                 <p>
@@ -243,62 +244,63 @@
                     $$
                 </p>
             </div>
-        </div>
-        従って，
-        <div class="scroll-container">
-            $$
-            \begin{aligned}
-            \Pot{\bm{c}_1,\ldots, \bm{c}_n}&=\prod_{j=1}^{i-1} B_j^{n-j+1}\times C_i^{i}\times C_{i+1}^{i+1}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
-            &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times {\norm{\pi_{i}(\bm{b}_{i+1})}^{2i}}\times \frac{B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2(i+1)}}B_i^{i+1}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
-            &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times \frac{B_i^{i+1}B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
-            &=\frac{B_i}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}} \prod_{j=1}^n B_j^{n-j+1}\\
-            &< \delta \Pot{\bm{b}_1,\ldots, \bm{b}_n}
-            \end{aligned}
-            $$
-        </div>
-        となる．
-        即ち，基底のポテンシャルはLovász条件を満足しない基底の入れ替えによって少なくとも\(\delta\)倍ずつ単調減少するため有限回で停止する．
-        </p>
+            </div>
+            従って，
+            <div class="scroll-container">
+                $$
+                \begin{aligned}
+                \Pot{\bm{c}_1,\ldots, \bm{c}_n}&=\prod_{j=1}^{i-1} B_j^{n-j+1}\times C_i^{i}\times C_{i+1}^{i+1}\times
+                \prod_{j=i+2}^n B_j^{n-j+1}\\
+                &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times {\norm{\pi_{i}(\bm{b}_{i+1})}^{2i}}\times
+                \frac{B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2(i+1)}}B_i^{i+1}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
+                &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times
+                \frac{B_i^{i+1}B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
+                &=\frac{B_i}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}} \prod_{j=1}^n B_j^{n-j+1}\\
+                &< \delta \Pot{\bm{b}_1,\ldots, \bm{b}_n} \end{aligned} $$ </div>
+                    となる．
+                    即ち，基底のポテンシャルはLovász条件を満足しない基底の入れ替えによって少なくとも\(\delta\)倍ずつ単調減少するため有限回で停止する．
+                    </p>
 
-        <section class="wiki-references-section">
-            <h2 id="reference">参考文献</h2>
-            <ol class="wiki-references-list">
-                <li id="ref-1">
-                    <span class="reference-text">
-                        Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
-                        <i>Towards a Modern LLL Implementation</i>.
-                        Cryptology ePrint Archive, Paper 2025/774.
-                        doi: 10.1007/978-981-95-5099-9_3
-                    </span>
-                    <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-                <li id="ref-2">
-                    <span class="reference-text">
-                        A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
-                        <i>Factoring polynomials with rational coefficients</i>.
-                        Mathematische Annalen.
-                        doi: 10.1007/BF01457454
-                    </span>
-                    <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-                <li id="ref-3">
-                    <span class="reference-text">
-                        Murray R. Bremner(2012).
-                        <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its Applications</i>.
-                        Chapman & Hall Pure and Applied Mathematics.
-                        ISBN: 978-1439807026
-                    </span>
-                    <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-            </ol>
-        </section>
+                    <section class="wiki-references-section">
+                        <h2 id="reference">参考文献</h2>
+                        <ol class="wiki-references-list">
+                            <li id="ref-1">
+                                <span class="reference-text">
+                                    Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
+                                    <i>Towards a Modern LLL Implementation</i>.
+                                    Cryptology ePrint Archive, Paper 2025/774.
+                                    doi: 10.1007/978-981-95-5099-9_3
+                                </span>
+                                <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                            </li>
+                            <li id="ref-2">
+                                <span class="reference-text">
+                                    A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
+                                    <i>Factoring polynomials with rational coefficients</i>.
+                                    Mathematische Annalen.
+                                    doi: 10.1007/BF01457454
+                                </span>
+                                <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                            </li>
+                            <li id="ref-3">
+                                <span class="reference-text">
+                                    Murray R. Bremner(2012).
+                                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                                        Applications</i>.
+                                    Chapman & Hall Pure and Applied Mathematics.
+                                    ISBN: 978-1439807026
+                                </span>
+                                <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
+                            </li>
+                        </ol>
+                    </section>
     </article>
 
     <footer></footer>
-    <script src="../footer.js"></script>
+    <script src="footer.js"></script>
 
-    <script src="../script.js"></script>
-    <script src="../search.js"></script>
+    <script src="script.js"></script>
+    <script src="search.js"></script>
 </body>
 
 </html>

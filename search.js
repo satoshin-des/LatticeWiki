@@ -2,13 +2,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('wiki-search-input');
     const searchButton = document.getElementById('wiki-search-button'); // ボタン取得
     const resultsContainer = document.getElementById('search-results-container');
-    
+
     let pagesData = [];
 
     // 1. data.json の読み込み
     try {
         const response = await fetch('data.json');
-        if (!response.ok) throw new Error(response.status);
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
         pagesData = await response.json();
     } catch (error) {
         console.error("データ読み込みエラー:", error);
@@ -17,10 +19,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. 検索ロジック（共通関数）
     const getFilteredData = (query) => {
-        if (!query) return [];
+        if (!query) {
+            return [];
+        }
         return pagesData.filter(page => {
-            return page.title.toLowerCase().includes(query) || 
-                   (page.keywords && page.keywords.toLowerCase().includes(query));
+            return page.title.toLowerCase().includes(query) ||
+                (page.keywords && page.keywords.toLowerCase().includes(query));
         });
     };
 
@@ -60,9 +64,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // イベント設定
     searchInput.addEventListener('input', updateResults); // 入力中にリスト更新
-    
+
     searchButton.addEventListener('click', jumpToTopResult); // ボタンクリック
-    
+
     searchInput.addEventListener('keypress', (e) => { // エンターキー
         if (e.key === 'Enter') {
             jumpToTopResult();
