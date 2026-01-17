@@ -29,6 +29,9 @@
             <sup id="cite_ref-2" class="reference">
                 <a href="#ref-2">[2]</a>
             </sup>
+            <sup id="cite_ref-4" class="reference">
+                <a href="#ref-4">[4]</a>
+            </sup>
             ．
             また，<b>loop invariant</b>と呼ばれることもある
             <sup id="cite_ref-3" class="reference">
@@ -44,7 +47,7 @@
                 <li><a href="#property">性質</a></li>
                 <li><a href="#example">具体例</a></li>
                 <li><a href="#proof-of-termination-of-LLL">ポテンシャルを利用したLLLアルゴリズムの停止性の証明</a></li>
-                <li><a href="#reference">参考文献</a></li>
+                <li><a href="#reference">出典</a></li>
             </ul>
         </div>
 
@@ -56,7 +59,7 @@
         </p>
         <p>
             \(L_i\)の基底\(\lbrace\bm{b}_1, \ldots, \bm{b}_i\rbrace\)のGSOベクトルは\(\bm{b}_1^\star, \ldots,
-            \bm{b}_i^\star\)であるため，\(L_i\)の体積は
+            \bm{b}_i^\star\)であるため，\(L_i\)の<a href="volume.html">体積</a>は
             $$\vol{L}=\prod_{j=1}^i \norm{\bm{b}_j^\star}$$
             と書ける．従って，基底のポテンシャルは以下の様に書き換えることができる：
             $$\Pot{\bm{b}_1, \ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i
@@ -202,98 +205,115 @@
         <h2 id="proof-of-termination-of-LLL">ポテンシャルを利用したLLLアルゴリズムの停止性の証明</h2>
 
         <p>
-            \(n\)次元格子\(L\)の基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)が<b>LLL基底簡約されている</b>とは，以下の2条件を満足することであった．
-        <ul>
-            <li>\(1\le \forall j < \forall i\le n\left(\abs{\mu_{i, j}}\le \frac{1}{2}\right)\)</li>
-            <li>\(2 \le \forall k \le n\left(\delta \norm{\bm{b}_{k-1}^\star}^2 \le
-                \norm{\pi_{k-1}(\bm{b}_k)}^2\right)\)</li>
-        </ul>
-        但し，\(\bm{b}_1^\star,\ldots, \bm{b}_n^\star\)は基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)のGSOベクトル，\(\bm{U}=(\mu_{i,
-        j})_{1\le i, j\le n}\)はGSO係数行列，
-        $$
-        \left\{
-        \begin{aligned}
-        & \pi_\ell : \R^n \longrightarrow \langle \bm{b}_1, \dots, \bm{b}_{\ell-1} \rangle_\mathbb{R}^\perp =
-        \langle \bm{b}_\ell^\star, \dots, \bm{b}_n^\star \rangle_\R, \\
-        & \pi_\ell(\bm{x}) := \sum_{i = \ell}^n \frac{\langle \bm{x}, \bm{b}_i^\star \rangle}{\norm{\bm{b}_i^\star}^2}
-        \bm{b}_i^\star
-        \end{aligned}
-        \right.
-        $$
-        は\(\langle \bm{b}_1, \dots, \bm{b}_{\ell-1} \rangle_\mathbb{R}\)の直交補空間への直交射影とする．<br>
-        \(1\le i\le n\)に対して，\(B_i:=\norm{\bm{b}_i^\star}^2\)，\(X:=\max_{1\le i\le n}B_i\)とおく．
-        $$
-        0<\Pot{\bm{b}_1,\ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i B_j\le X^{\frac{n(n+1)}{2}} $$ が成立する．
-            サイズ基底簡約によってGSOベクトルは変化しないため，基底ベクトルの交換によるポテンシャルの値の変化を考える．
-            隣り合う基底ベクトル\(\bm{b}_{\ell-1}\)，\(\bm{b}_\ell\)の交換によって得られる新しい基底を\(\{\bm{c}_1,\ldots,\bm{c}_n\}\)とおく： $$
-            \{\bm{c}_1,\ldots,\bm{c}_n\}:=\{\bm{b}_1,\ldots,\bm{b}_{\ell-2},\bm{b}_\ell, \bm{b}_{\ell-1},
-            \bm{b}_{\ell+1},\ldots,\bm{b}_n\}. $$
-            新しい基底ベクトルのGSOベクトルを\(\bm{c}_1^\star,\ldots,\bm{c}_n^\star\)とし，その2乗ノルムを\(C_i=\norm{\bm{c}_i^\star}^2\)とおく．
-            このとき，次が成立することが知られている． <div class="scroll-container">
-            <div class="math-block theorem">
-                <span class="math-label">定理</span>
-                <p>
-                    $$
-                    C_j=\left\{
-                    \begin{aligned}
-                    &B_j & 1\le j\le i-1 \lor i+2\le j\le n\\
-                    &\norm{\pi_{i}(\bm{b}_{i+1})}^2 & j=i\\
-                    &\frac{B_{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^2}B_i & j=i+1
-                    \end{aligned}
-                    \right.
-                    $$
-                </p>
-            </div>
-            </div>
-            従って，
-            <div class="scroll-container">
+            \(n\)次元格子\(L\)の基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)が簡約パラメタ\(\frac{1}{4}<\delta <1\)に対して<b>
+                LLL基底簡約されている</b>とは，以下の2条件を満足することであった．
+                <ul>
+                    <li>\(1\le \forall j < \forall i\le n\left(\abs{\mu_{i, j}}\le \frac{1}{2}\right)\)</li>
+                    <li>\(2 \le \forall k \le n\left(\delta \norm{\bm{b}_{k-1}^\star}^2 \le
+                        \norm{\pi_{k-1}(\bm{b}_k)}^2\right)\)</li>
+                </ul>
+                但し，\(\bm{b}_1^\star,\ldots,
+                \bm{b}_n^\star\)は基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)のGSOベクトル，\(\bm{U}=(\mu_{i,
+                j})_{1\le i, j\le n}\)はGSO係数行列，
                 $$
+                \left\{
                 \begin{aligned}
-                \Pot{\bm{c}_1,\ldots, \bm{c}_n}&=\prod_{j=1}^{i-1} B_j^{n-j+1}\times C_i^{i}\times C_{i+1}^{i+1}\times
-                \prod_{j=i+2}^n B_j^{n-j+1}\\
-                &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times {\norm{\pi_{i}(\bm{b}_{i+1})}^{2i}}\times
-                \frac{B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2(i+1)}}B_i^{i+1}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
-                &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times
-                \frac{B_i^{i+1}B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}}\times \prod_{j=i+2}^n B_j^{n-j+1}\\
-                &=\frac{B_i}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}} \prod_{j=1}^n B_j^{n-j+1}\\
-                &< \delta \Pot{\bm{b}_1,\ldots, \bm{b}_n} \end{aligned} $$ </div>
-                    となる．
-                    即ち，基底のポテンシャルはLovász条件を満足しない基底の入れ替えによって少なくとも\(\delta\)倍ずつ単調減少するため有限回で停止する．
-                    </p>
+                & \pi_\ell : \R^n \longrightarrow \langle \bm{b}_1, \dots, \bm{b}_{\ell-1} \rangle_\mathbb{R}^\perp =
+                \langle \bm{b}_\ell^\star, \dots, \bm{b}_n^\star \rangle_\R, \\
+                & \pi_\ell(\bm{x}) := \sum_{i = \ell}^n \frac{\langle \bm{x}, \bm{b}_i^\star
+                \rangle}{\norm{\bm{b}_i^\star}^2}
+                \bm{b}_i^\star
+                \end{aligned}
+                \right.
+                $$
+                は\(\langle \bm{b}_1, \dots, \bm{b}_{\ell-1} \rangle_\mathbb{R}\)の直交補空間への直交射影とする．<br>
+                \(1\le i\le n\)に対して，\(B_i:=\norm{\bm{b}_i^\star}^2\)，\(X:=\max_{1\le i\le n}B_i\)とおく．
+                $$
+                0<\Pot{\bm{b}_1,\ldots, \bm{b}_n}=\prod_{i=1}^n \prod_{j=1}^i B_j\le X^{\frac{n(n+1)}{2}} $$ が成立する．
+                    サイズ基底簡約によってGSOベクトルは変化しないため，基底ベクトルの交換によるポテンシャルの値の変化を考える．
+                    隣り合う基底ベクトル\(\bm{b}_{\ell-1}\)，\(\bm{b}_\ell\)の交換によって得られる新しい基底を\(\{\bm{c}_1,\ldots,\bm{c}_n\}\)とおく：
+                    $$ \{\bm{c}_1,\ldots,\bm{c}_n\}:=\{\bm{b}_1,\ldots,\bm{b}_{\ell-2},\bm{b}_\ell, \bm{b}_{\ell-1},
+                    \bm{b}_{\ell+1},\ldots,\bm{b}_n\}. $$
+                    新しい基底ベクトルのGSOベクトルを\(\bm{c}_1^\star,\ldots,\bm{c}_n^\star\)とし，その2乗ノルムを\(C_i=\norm{\bm{c}_i^\star}^2\)とおく．
+                    このとき，次が成立することが知られている． <div class="scroll-container">
+                    <div class="math-block theorem">
+                        <span class="math-label">定理</span>
+                        <p>
+                            $$
+                            C_j=\left\{
+                            \begin{aligned}
+                            &B_j & 1\le j\le i-1 \lor i+2\le j\le n\\
+                            &\norm{\pi_{i}(\bm{b}_{i+1})}^2 & j=i\\
+                            &\frac{B_{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^2}B_i & j=i+1
+                            \end{aligned}
+                            \right.
+                            $$
+                        </p>
+                    </div>
+                    </div>
+                    従って，
+                    <div class="scroll-container">
+                        $$
+                        \begin{aligned}
+                        \Pot{\bm{c}_1,\ldots, \bm{c}_n}&=\prod_{j=1}^{i-1} B_j^{n-j+1}\times C_i^{i}\times
+                        C_{i+1}^{i+1}\times
+                        \prod_{j=i+2}^n B_j^{n-j+1}\\
+                        &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times {\norm{\pi_{i}(\bm{b}_{i+1})}^{2i}}\times
+                        \frac{B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2(i+1)}}B_i^{i+1}\times \prod_{j=i+2}^n
+                        B_j^{n-j+1}\\
+                        &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times
+                        \frac{B_i^{i+1}B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}}\times \prod_{j=i+2}^n
+                        B_j^{n-j+1}\\
+                        &=\frac{B_i}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}} \prod_{j=1}^n B_j^{n-j+1}\\
+                        &< \delta \Pot{\bm{b}_1,\ldots, \bm{b}_n} \end{aligned} $$ </div>
+                            となる．
+                            即ち，基底のポテンシャルはLovász条件を満足しない基底の入れ替えによって少なくとも\(\delta\)倍ずつ単調減少するため有限回で停止する．
+        </p>
 
-                    <section class="wiki-references-section">
-                        <h2 id="reference">参考文献</h2>
-                        <ol class="wiki-references-list">
-                            <li id="ref-1">
-                                <span class="reference-text">
-                                    Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
-                                    <i>Towards a Modern LLL Implementation</i>.
-                                    Cryptology ePrint Archive, Paper 2025/774.
-                                    doi: 10.1007/978-981-95-5099-9_3
-                                </span>
-                                <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
-                            </li>
-                            <li id="ref-2">
-                                <span class="reference-text">
-                                    A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
-                                    <i>Factoring polynomials with rational coefficients</i>.
-                                    Mathematische Annalen.
-                                    doi: 10.1007/BF01457454
-                                </span>
-                                <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
-                            </li>
-                            <li id="ref-3">
-                                <span class="reference-text">
-                                    Murray R. Bremner(2012).
-                                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
-                                        Applications</i>.
-                                    Chapman & Hall Pure and Applied Mathematics.
-                                    ISBN: 978-1439807026
-                                </span>
-                                <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
-                            </li>
-                        </ol>
-                    </section>
+        <section class="wiki-references-section">
+            <h2 id="reference">出典</h2>
+            <ol class="wiki-references-list">
+                <li id="ref-1">
+                    <span class="reference-text">
+                        Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
+                        <i>Towards a Modern LLL Implementation</i>.
+                        Cryptology ePrint Archive, Paper 2025/774.
+                        doi: 10.1007/978-981-95-5099-9_3
+                    </span>
+                    <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+                <li id="ref-2">
+                    <span class="reference-text">
+                        A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
+                        <i>Factoring polynomials with rational coefficients</i>.
+                        Mathematische Annalen.
+                        doi: 10.1007/BF01457454
+                    </span>
+                    <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+                <li id="ref-3">
+                    <span class="reference-text">
+                        Murray R. Bremner(2012).
+                        <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                            Applications</i>.
+                        Chapman & Hall Pure and Applied Mathematics.
+                        ISBN: 978-1439807026
+                    </span>
+                    <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+                <li id="ref-4">
+                    <span class="reference-text">
+                        LLL基底簡約アルゴリズムの停止性を証明する場合，厳密にはポテンシャルとは少し異なる
+                        $$
+                        D:=\prod_{i=1}^{n-1} \vol{L_i}^2
+                        $$
+                        という量が使用される（厳密にはこの量を<b>loop invariant</b>と呼ぶ）．
+                        しかし，\(\vol{L_n}=\vol{L}\)は格子基底の取り方に依存しない不変量であるため，この量もポテンシャルと呼んでいることに注意されたい．
+                    </span>
+                    <a href="#cite_ref-4" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+            </ol>
+        </section>
     </article>
 
     <footer></footer>

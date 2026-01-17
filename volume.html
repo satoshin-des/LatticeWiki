@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体積</title>
+    <style>
+        @import url(style.css);
+    </style>
+    <script src="macros.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
+    <article class="wiki-content">
+        <h1>体積</h1>
+        <p>
+            格子の<b>体積</b>，又は<b>行列式</b>とは，格子の不変量の一つである．
+        </p>
+
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li><a href="#definition">定義</a></li>
+                <li><a href="#property">性質</a></li>
+                <li><a href="#example">具体例</a></li>
+            </ul>
+        </div>
+
+        <h2 id="definition">定義</h2>
+        <p>
+            \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とする．
+            このとき，基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)の<b>Gram行列</b>を
+            $$
+            \bm{G}:=\begin{bmatrix}
+            \inner{\bm{b}_1, \bm{b}_1} & \cdots & \inner{\bm{b}_1, \bm{b}_n}\\
+            \vdots & \ddots & \vdots\\
+            \inner{\bm{b}_n, \bm{b}_1} & \cdots & \inner{\bm{b}_n, \bm{b}_n}
+            \end{bmatrix}
+            $$
+            で定義し，その行列式
+            $$
+            \Delta(\bm{b}_1,\ldots, \bm{b}_n):=\det \bm{G}
+            $$
+            を<b>Gram行列式</b>と呼ぶ．
+            このとき，格子\(L\)の<b>体積</b>は
+            $$
+            \vol{L}:=\sqrt{\Delta(\bm{b}_1,\ldots, \bm{b}_n)}
+            $$
+            で定義される．
+            また，体積は\(\det L\)と表記されることもしばしばあるが，本記事では\(\vol{L}\)の表記で統一する．
+        </p>
+
+        <h2 id="property">性質</h2>
+
+        <h3>体積の不変性</h3>
+
+        <p>
+            格子の体積は，格子基底の取り方に依存しない．
+        </p>
+        <div class="scroll-container">
+            <div class="math-block theorem">
+                <span class="math-label">定理</span>
+                <p>
+                    \(L\)を\(n\)次元格子とする．
+                    このとき，格子基底の体積\(\vol{L}\)は基底の取り方に依らず一定である．
+                </p>
+            </div>
+        </div>
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)，\(\{\bm{c}_1,\ldots,\bm{c}_n\}\)を\(L\)の互いに異なる基底とする．
+                    また，\(\bm{B}\)，\(\bm{C}\)をそれぞれの格子基底行列とする．
+                    このとき，ある単模行列\(\bm{T}\in \Z^{n\times n}\)が存在して\(\bm{C}=\bm{T}\bm{B}\)が成立する．
+                    従って，定義から
+                    <div class="scroll-container">
+                        $$
+                        \begin{aligned}
+                        \sqrt{\det{(\bm{C}\bm{C}^\top)}}&=\sqrt{\det{(\bm{T}\bm{B}\bm{B}^\top\bm{T}^\top)}}\\
+                        &=\sqrt{\det{\bm{T}}^2 \det{(\bm{B}\bm{B}^\top)}}\\
+                        &=\sqrt{\det{(\bm{B}\bm{B}^\top)}}
+                        \end{aligned}
+                        $$
+                    </div>
+                    である．
+                    即ち，基底の取り方に依らない．
+                </p>
+            </div>
+        </details>
+    </article>
+
+    <footer></footer>
+    <script src="footer.js"></script>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>
