@@ -149,32 +149,33 @@
                             $$
                             \begin{aligned}
                             \vol{L}^2&=\det{\bm{B}\bm{B}^\top}\\
-                            &=\det{\bm{U}\bm{B}^\star{\bm{B}^\star}^\top \bm{U}^\top}=\det{\bm{B}^\star{\bm{B}^\star}^\top}
+                            &=\det{\bm{U}\bm{B}^\star{\bm{B}^\star}^\top
+                            \bm{U}^\top}=\det{\bm{B}^\star{\bm{B}^\star}^\top}
                             \end{aligned}
                             $$
                         </div>
                         が成立する．
                         また，異なるGSOベクトルは直交するので
                         <div class="scroll-container">
-                        $$
-                        \begin{aligned}
-                        \vol{L}^2&=\det{\bm{B}^\star{\bm{B}^\star}^\top}\\
-                        &=\det{
+                            $$
+                            \begin{aligned}
+                            \vol{L}^2&=\det{\bm{B}^\star{\bm{B}^\star}^\top}\\
+                            &=\det{
                             \begin{bmatrix}
                             \inner{\bm{b}_1^\star, \bm{b}_1^\star} & \cdots & \inner{\bm{b}_1^\star, \bm{b}_n^\star}\\
                             \vdots & \ddots & \vdots\\
                             \inner{\bm{b}_n^\star, \bm{b}_1^\star} & \cdots & \inner{\bm{b}_n^\star, \bm{b}_n^\star}
                             \end{bmatrix}
-                        }\\
-                        &=\det{
+                            }\\
+                            &=\det{
                             \begin{bmatrix}
-                            \inner{\bm{b}_1^\star, \bm{b}_1^\star} &  & \huge{0}\\
-                             & \ddots & \\
-                            \huge{0} &  & \inner{\bm{b}_n^\star, \bm{b}_n^\star}
+                            \inner{\bm{b}_1^\star, \bm{b}_1^\star} & & \huge{0}\\
+                            & \ddots & \\
+                            \huge{0} & & \inner{\bm{b}_n^\star, \bm{b}_n^\star}
                             \end{bmatrix}
-                        }=\prod_{i=1}^n \norm{\bm{b}_i^\star}^2
-                        \end{aligned}
-                        $$
+                            }=\prod_{i=1}^n \norm{\bm{b}_i^\star}^2
+                            \end{aligned}
+                            $$
                         </div>
                         となる．
                         定義から\(\vol{L}\ge 0\)なので，定理を得る．
@@ -198,6 +199,32 @@
                 </p>
             </div>
         </div>
+
+        <h2 id="example">具体例</h2>
+
+        <p>
+            $$
+            \bm{b}_1=(100, 0, 0), \bm{b}_2=(101, 1, 0), \bm{b}_3=(102, 0, 1)
+            $$
+            で生成される格子\(L\)を考える．
+            このとき，\(L\)の体積は
+            $$
+            \vol{L}=\det{
+            \begin{bmatrix}
+            100 & 0 & 0\\
+            101 & 1 & 0\\
+            102 & 0 & 1
+            \end{bmatrix}
+            }=100
+            $$
+            である．
+            他方，
+            $$
+            \bm{c}_1=(1, 1, 0), \bm{c}_2=(1, -1, 1), \bm{c}_3=(17, -17, -33)
+            $$
+            の体積も同様に100とわかる．
+            実は，\(\{\bm{b}_1,\bm{b}_2,\bm{b}_3\}\)，\(\{\bm{c}_1,\bm{c}_2,\bm{c}_3\}\)の双方の生成する格子は同じである．
+        </p>
 
         <h2>参考文献</h2>
         <ul>
