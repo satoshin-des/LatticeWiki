@@ -71,6 +71,15 @@
         <h3>GSAスロープの傾きとの関係</h3>
 
         <p>
+            \(n\)次元格子\(L\)の基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)に対して，<b>GSAスロープの傾き</b>，又は<b>slope</b>は，
+            $$
+            \begin{aligned}
+            \slope{\bm{b}_1,\ldots,\bm{b}_n}&:=\dfrac{\sum_{i=1}^n i \log \| \bm{b}_i^\star \|^2 - \frac{1}{2}(n+1)
+            \sum_{i=1}^n \log \| \bm{b}_i^\star \|^2}{n(n^2 - 1)/12}\\
+            &=\frac{3}{n(n^2-1)}\log \prod_{i=1}^n \prod_{j=1}^i\frac{\norm{\bm{b}_i^\star}^2}{\norm{\bm{b}_j^\star}^2}
+            \end{aligned}
+            $$
+            で定義される量である．
             GSAスロープの傾きもポテンシャル同様，格子基底の品質を表す指標の一つである．
             GSAスロープの傾きと基底のポテンシャルとの間には，次の関係が成立することが知られている
             <sup id="cite_ref-1" class="reference">
@@ -314,6 +323,41 @@
                 </li>
             </ol>
         </section>
+
+        <h2>参考文献</h2>
+        <ul>
+            <li>
+                <span class="reference-text">
+                    Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
+                    <i>Towards a Modern LLL Implementation</i>.
+                    Cryptology ePrint Archive, Paper 2025/774.
+                    doi: 10.1007/978-981-95-5099-9_3
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
+                    <i>Factoring polynomials with rational coefficients</i>.
+                    Mathematische Annalen.
+                    doi: 10.1007/BF01457454
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    Murray R. Bremner(2012).
+                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                        Applications</i>.
+                    Chapman & Hall Pure and Applied Mathematics.
+                    ISBN: 978-1439807026
+                </span>
+            </li>
+            <li>
+                青野良範，安田雅哉
+                『格子暗号解読のための数学的基礎』，
+                2019年．
+                ISBN 978-4764905986
+            </li>
+        </ul>
     </article>
 
     <footer></footer>

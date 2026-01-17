@@ -49,7 +49,7 @@
             $$
             で定義し，その行列式
             $$
-            \Delta(\bm{b}_1,\ldots, \bm{b}_n):=\det \bm{G}
+            \Delta(\bm{b}_1,\ldots, \bm{b}_n):=\det{\bm{G}}
             $$
             を<b>Gram行列式</b>と呼ぶ．
             このとき，格子\(L\)の<b>体積</b>は
@@ -57,7 +57,7 @@
             \vol{L}:=\sqrt{\Delta(\bm{b}_1,\ldots, \bm{b}_n)}
             $$
             で定義される．
-            また，体積は\(\det L\)と表記されることもしばしばあるが，本記事では\(\vol{L}\)の表記で統一する．
+            また，体積は\(\det{L}\)と表記されることもしばしばあるが，本記事では\(\vol{L}\)の表記で統一する．
         </p>
 
         <h2 id="property">性質</h2>
@@ -71,7 +71,7 @@
             <div class="math-block theorem">
                 <span class="math-label">定理</span>
                 <p>
-                    \(L\)を\(n\)次元格子とする．
+                    \(L\subseteq \R^m\)を\(n\)次元格子とする．
                     このとき，格子基底の体積\(\vol{L}\)は基底の取り方に依らず一定である．
                 </p>
             </div>
@@ -84,20 +84,139 @@
                     また，\(\bm{B}\)，\(\bm{C}\)をそれぞれの格子基底行列とする．
                     このとき，ある単模行列\(\bm{T}\in \Z^{n\times n}\)が存在して\(\bm{C}=\bm{T}\bm{B}\)が成立する．
                     従って，定義から
-                    <div class="scroll-container">
-                        $$
-                        \begin{aligned}
-                        \sqrt{\det{(\bm{C}\bm{C}^\top)}}&=\sqrt{\det{(\bm{T}\bm{B}\bm{B}^\top\bm{T}^\top)}}\\
-                        &=\sqrt{\det{\bm{T}}^2 \det{(\bm{B}\bm{B}^\top)}}\\
-                        &=\sqrt{\det{(\bm{B}\bm{B}^\top)}}
-                        \end{aligned}
-                        $$
-                    </div>
-                    である．
-                    即ち，基底の取り方に依らない．
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    \sqrt{\det{\bm{C}\bm{C}^\top}}&=\sqrt{\det{\bm{T}\bm{B}\bm{B}^\top\bm{T}^\top}}\\
+                    &=\sqrt{\det{\bm{T}}^2 \det{\bm{B}\bm{B}^\top}}\\
+                    &=\sqrt{\det{\bm{B}\bm{B}^\top}}
+                    \end{aligned}
+                    $$
+                </div>
+                である．
+                即ち，基底の取り方に依らない．
                 </p>
             </div>
         </details>
+
+        <h3>体積の書き換え</h3>
+
+        <div class="scroll-container">
+            <div class="math-block theorem">
+                <span class="math-label">定理（Hadamard）</span>
+                <p>
+                    \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とし，\(\bm{b}_1^\star, \ldots,
+                    \bm{b}_n^\star\)をそのGSOベクトルとする．
+                    このとき，
+                    $$
+                    \vol{L}=\prod_{i=1}^n \norm{\bm{b}_i^\star}
+                    $$
+                    が成立する．
+                </p>
+            </div>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    GSOベクトルは
+                <div class="scroll-container">
+                    $$
+                    \left\{
+                    \begin{aligned}
+                    \bm{b}_1^\star &:= \bm{b}_1, \\
+                    \bm{b}_i^\star &:= \bm{b}_i - \sum_{j = 1}^{i-1} \mu_{i, j} \bm{b}_j^\star,~
+                    \mu_{i, j} := \frac{\langle \bm{b}_i, \bm{b}_j^\star\rangle}{\| \bm{b}_j^\star \|^2}\quad (1
+                    \le j < i \le n). \end{aligned} \right. $$ </div>
+                        と定義されるものであった．
+                        従って，
+                        $$
+                        \bm{B}^\star:=\begin{bmatrix}
+                        \bm{b}_1^\star\\
+                        \vdots\\
+                        \bm{b}_n^\star
+                        \end{bmatrix},\quad \bm{U}:=\begin{bmatrix}
+                        1 & & & \\
+                        \mu_{2, 1} & 1 & \huge{0} & \\
+                        \vdots & \vdots & \ddots & \\
+                        \mu_{n, 1} & \mu_{n, 2} & \cdots & 1
+                        \end{bmatrix}
+                        $$
+                        とおけば，\(\bm{B}\)を基底行列として，\(\bm{B}=\bm{U}\bm{B}^\star\)が成立する．
+                        よって，定義から
+                        <div class="scroll-container">
+                            $$
+                            \begin{aligned}
+                            \vol{L}^2&=\det{\bm{B}\bm{B}^\top}\\
+                            &=\det{\bm{U}\bm{B}^\star{\bm{B}^\star}^\top \bm{U}^\top}=\det{\bm{B}^\star{\bm{B}^\star}^\top}
+                            \end{aligned}
+                            $$
+                        </div>
+                        が成立する．
+                        また，異なるGSOベクトルは直交するので
+                        <div class="scroll-container">
+                        $$
+                        \begin{aligned}
+                        \vol{L}^2&=\det{\bm{B}^\star{\bm{B}^\star}^\top}\\
+                        &=\det{
+                            \begin{bmatrix}
+                            \inner{\bm{b}_1^\star, \bm{b}_1^\star} & \cdots & \inner{\bm{b}_1^\star, \bm{b}_n^\star}\\
+                            \vdots & \ddots & \vdots\\
+                            \inner{\bm{b}_n^\star, \bm{b}_1^\star} & \cdots & \inner{\bm{b}_n^\star, \bm{b}_n^\star}
+                            \end{bmatrix}
+                        }\\
+                        &=\det{
+                            \begin{bmatrix}
+                            \inner{\bm{b}_1^\star, \bm{b}_1^\star} &  & \huge{0}\\
+                             & \ddots & \\
+                            \huge{0} &  & \inner{\bm{b}_n^\star, \bm{b}_n^\star}
+                            \end{bmatrix}
+                        }=\prod_{i=1}^n \norm{\bm{b}_i^\star}^2
+                        \end{aligned}
+                        $$
+                        </div>
+                        となる．
+                        定義から\(\vol{L}\ge 0\)なので，定理を得る．
+                        </p>
+                </div>
+        </details>
+
+        <h3>Hadamardの不等式</h3>
+
+        <div class="scroll-container">
+            <div class="math-block theorem">
+                <span class="math-label">定理（Hadamard）</span>
+                <p>
+                    \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とする．
+                    このとき，
+                    $$
+                    \vol{L}\le \prod_{i=1}^n \norm{\bm{b}_i}
+                    $$
+                    が成立する．
+                    また，等号成立条件は，全ての基底ベクトルが直交していることである．
+                </p>
+            </div>
+        </div>
+
+        <h2>参考文献</h2>
+        <ul>
+            <li>
+                <span class="reference-text">
+                    Murray R. Bremner(2012).
+                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                        Applications</i>.
+                    Chapman & Hall Pure and Applied Mathematics.
+                    ISBN: 978-1439807026
+                </span>
+            </li>
+            <li>
+                青野良範，安田雅哉
+                『格子暗号解読のための数学的基礎』，
+                2019年．
+                ISBN 978-4764905986
+            </li>
+        </ul>
     </article>
 
     <footer></footer>
