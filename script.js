@@ -1,3 +1,7 @@
+/*
+ * このファイルの全てはAIによって生成されたものです．
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. セクションが画面に入ったらふわっと表示させる (Intersection Observer)
     const observer = new IntersectionObserver((entries) => {

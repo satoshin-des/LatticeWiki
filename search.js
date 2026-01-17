@@ -1,3 +1,7 @@
+/*
+ * このファイルの全てはAIによって生成されたものです．
+ */
+
 document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('wiki-search-input');
     const searchButton = document.getElementById('wiki-search-button'); // ボタン取得
