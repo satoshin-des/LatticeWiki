@@ -90,17 +90,17 @@
             </sup>
             ．
         </p>
-        <div class="scroll-container">
-            <div class="math-block theorem">
-                <span class="math-label">命題</span>
-                <p>
-                    \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)を\(n\)次元格子\(L\subseteq \mathbb{R}^m\)の基底とする．
-                    このとき，
-                    $$\log \Pot{\bm{b}_1, \ldots, \bm{b}_n}+\binom{n+1}{3}\slope{\bm{b}_1, \ldots, \bm{b}_n}=(n+1)\log
-                    \vol{L}$$
-                    が成立する．
-                </p>
+        <div class="math-block theorem">
+            <span class="math-label">命題</span>
+            <p>
+                \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)を\(n\)次元格子\(L\subseteq \mathbb{R}^m\)の基底とする．
+                このとき，
+            <div class="scroll-container">
+                $$\log \Pot{\bm{b}_1, \ldots, \bm{b}_n}+\binom{n+1}{3}\slope{\bm{b}_1, \ldots, \bm{b}_n}=(n+1)\log
+                \vol{L}$$
             </div>
+            が成立する．
+            </p>
         </div>
         <details class="wiki-proof">
             <summary>証明</summary>
@@ -156,14 +156,12 @@
 
         <h3>ポテンシャルが整数となる十分条件</h3>
 
-        <div class="scroll-container">
-            <div class="math-block theorem">
-                <span class="math-label">命題</span>
-                <p>
-                    \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)を\(n\)次元格子\(L\subseteq \mathbb{R}^m\)の基底とする．
-                    このとき，基底行列\(\bm{B}\)が\(\bm{B}\bm{B}^\top\in \Z^n\)を満たすとき，基底のポテンシャルは整数になる．
-                </p>
-            </div>
+        <div class="math-block theorem">
+            <span class="math-label">命題</span>
+            <p>
+                \(\lbrace\bm{b}_1, \ldots, \bm{b}_n\rbrace\)を\(n\)次元格子\(L\subseteq \mathbb{R}^m\)の基底とする．
+                このとき，基底行列\(\bm{B}\)が\(\bm{B}\bm{B}^\top\in \Z^n\)を満たすとき，基底のポテンシャルは整数になる．
+            </p>
         </div>
         <details class="wiki-proof">
             <summary>証明</summary>
@@ -248,119 +246,119 @@
                     \bm{b}_{\ell+1},\ldots,\bm{b}_n\}. $$
                     新しい基底ベクトルのGSOベクトルを\(\bm{c}_1^\star,\ldots,\bm{c}_n^\star\)とし，その2乗ノルムを\(C_i=\norm{\bm{c}_i^\star}^2\)とおく．
                     このとき，次が成立することが知られている． <div class="scroll-container">
+                    <span class="math-label">定理</span>
+                    <p>
                     <div class="math-block theorem">
-                        <span class="math-label">定理</span>
-                        <p>
-                            $$
-                            C_j=\left\{
-                            \begin{aligned}
-                            &B_j & 1\le j\le i-1 \lor i+2\le j\le n\\
-                            &\norm{\pi_{i}(\bm{b}_{i+1})}^2 & j=i\\
-                            &\frac{B_{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^2}B_i & j=i+1
-                            \end{aligned}
-                            \right.
-                            $$
-                        </p>
-                    </div>
-                    </div>
-                    従って，
-                    <div class="scroll-container">
                         $$
+                        C_j=\left\{
                         \begin{aligned}
-                        \Pot{\bm{c}_1,\ldots, \bm{c}_n}&=\prod_{j=1}^{i-1} B_j^{n-j+1}\times C_i^{i}\times
-                        C_{i+1}^{i+1}\times
-                        \prod_{j=i+2}^n B_j^{n-j+1}\\
-                        &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times {\norm{\pi_{i}(\bm{b}_{i+1})}^{2i}}\times
-                        \frac{B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2(i+1)}}B_i^{i+1}\times \prod_{j=i+2}^n
-                        B_j^{n-j+1}\\
-                        &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times
-                        \frac{B_i^{i+1}B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}}\times \prod_{j=i+2}^n
-                        B_j^{n-j+1}\\
-                        &=\frac{B_i}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}} \prod_{j=1}^n B_j^{n-j+1}\\
-                        &< \delta \Pot{\bm{b}_1,\ldots, \bm{b}_n} \end{aligned} $$ </div>
-                            となる．
-                            即ち，基底のポテンシャルはLovász条件を満足しない基底の入れ替えによって少なくとも\(\delta\)倍ずつ単調減少するため有限回で停止する．
+                        &B_j & 1\le j\le i-1 \lor i+2\le j\le n\\
+                        &\norm{\pi_{i}(\bm{b}_{i+1})}^2 & j=i\\
+                        &\frac{B_{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^2}B_i & j=i+1
+                        \end{aligned}
+                        \right.
+                        $$
+                    </div>
         </p>
+        </div>
+        従って，
+        <div class="scroll-container">
+            $$
+            \begin{aligned}
+            \Pot{\bm{c}_1,\ldots, \bm{c}_n}&=\prod_{j=1}^{i-1} B_j^{n-j+1}\times C_i^{i}\times
+            C_{i+1}^{i+1}\times
+            \prod_{j=i+2}^n B_j^{n-j+1}\\
+            &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times {\norm{\pi_{i}(\bm{b}_{i+1})}^{2i}}\times
+            \frac{B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2(i+1)}}B_i^{i+1}\times \prod_{j=i+2}^n
+            B_j^{n-j+1}\\
+            &=\prod_{j=1}^{i-1} B_j^{n-j+1}\times
+            \frac{B_i^{i+1}B_{i+1}^{i+1}}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}}\times \prod_{j=i+2}^n
+            B_j^{n-j+1}\\
+            &=\frac{B_i}{\norm{\pi_{i}(\bm{b}_{i+1})}^{2}} \prod_{j=1}^n B_j^{n-j+1}\\
+            &< \delta \Pot{\bm{b}_1,\ldots, \bm{b}_n} \end{aligned} $$ </div>
+                となる．
+                即ち，基底のポテンシャルはLovász条件を満足しない基底の入れ替えによって少なくとも\(\delta\)倍ずつ単調減少するため有限回で停止する．
+                </p>
 
-        <section class="wiki-references-section">
-            <h2 id="reference">出典</h2>
-            <ol class="wiki-references-list">
-                <li id="ref-1">
-                    <span class="reference-text">
-                        Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
-                        <i>Towards a Modern LLL Implementation</i>.
-                        Cryptology ePrint Archive, Paper 2025/774.
-                        doi: 10.1007/978-981-95-5099-9_3
-                    </span>
-                    <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-                <li id="ref-2">
-                    <span class="reference-text">
-                        A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
-                        <i>Factoring polynomials with rational coefficients</i>.
-                        Mathematische Annalen.
-                        doi: 10.1007/BF01457454
-                    </span>
-                    <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-                <li id="ref-3">
-                    <span class="reference-text">
-                        Murray R. Bremner(2012).
-                        <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
-                            Applications</i>.
-                        Chapman & Hall Pure and Applied Mathematics.
-                        ISBN: 978-1439807026
-                    </span>
-                    <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-                <li id="ref-4">
-                    <span class="reference-text">
-                        LLL基底簡約アルゴリズムの停止性を証明する場合，厳密にはポテンシャルとは少し異なる
-                        $$
-                        D:=\prod_{i=1}^{n-1} \vol{L_i}^2
-                        $$
-                        という量が使用される（厳密にはこの量を<b>loop invariant</b>と呼ぶ）．
-                        しかし，\(\vol{L_n}=\vol{L}\)は格子基底の取り方に依存しない不変量であるため，この量もポテンシャルと呼んでいることに注意されたい．
-                    </span>
-                    <a href="#cite_ref-4" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-            </ol>
-        </section>
+                <section class="wiki-references-section">
+                    <h2 id="reference">出典</h2>
+                    <ol class="wiki-references-list">
+                        <li id="ref-1">
+                            <span class="reference-text">
+                                Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
+                                <i>Towards a Modern LLL Implementation</i>.
+                                Cryptology ePrint Archive, Paper 2025/774.
+                                doi: 10.1007/978-981-95-5099-9_3
+                            </span>
+                            <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-2">
+                            <span class="reference-text">
+                                A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
+                                <i>Factoring polynomials with rational coefficients</i>.
+                                Mathematische Annalen.
+                                doi: 10.1007/BF01457454
+                            </span>
+                            <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-3">
+                            <span class="reference-text">
+                                Murray R. Bremner(2012).
+                                <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                                    Applications</i>.
+                                Chapman & Hall Pure and Applied Mathematics.
+                                ISBN: 978-1439807026
+                            </span>
+                            <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-4">
+                            <span class="reference-text">
+                                LLL基底簡約アルゴリズムの停止性を証明する場合，厳密にはポテンシャルとは少し異なる
+                                $$
+                                D:=\prod_{i=1}^{n-1} \vol{L_i}^2
+                                $$
+                                という量が使用される（厳密にはこの量を<b>loop invariant</b>と呼ぶ）．
+                                しかし，\(\vol{L_n}=\vol{L}\)は格子基底の取り方に依存しない不変量であるため，この量もポテンシャルと呼んでいることに注意されたい．
+                            </span>
+                            <a href="#cite_ref-4" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                    </ol>
+                </section>
 
-        <h2>参考文献</h2>
-        <ul>
-            <li>
-                <span class="reference-text">
-                    Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
-                    <i>Towards a Modern LLL Implementation</i>.
-                    Cryptology ePrint Archive, Paper 2025/774.
-                    doi: 10.1007/978-981-95-5099-9_3
-                </span>
-            </li>
-            <li>
-                <span class="reference-text">
-                    A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
-                    <i>Factoring polynomials with rational coefficients</i>.
-                    Mathematische Annalen.
-                    doi: 10.1007/BF01457454
-                </span>
-            </li>
-            <li>
-                <span class="reference-text">
-                    Murray R. Bremner(2012).
-                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
-                        Applications</i>.
-                    Chapman & Hall Pure and Applied Mathematics.
-                    ISBN: 978-1439807026
-                </span>
-            </li>
-            <li>
-                青野良範，安田雅哉
-                『格子暗号解読のための数学的基礎』，
-                2019年．
-                ISBN 978-4764905986
-            </li>
-        </ul>
+                <h2>参考文献</h2>
+                <ul>
+                    <li>
+                        <span class="reference-text">
+                            Léo Ducas1, Ludo N. Pulles, and Marc Stevens(2025).
+                            <i>Towards a Modern LLL Implementation</i>.
+                            Cryptology ePrint Archive, Paper 2025/774.
+                            doi: 10.1007/978-981-95-5099-9_3
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
+                            <i>Factoring polynomials with rational coefficients</i>.
+                            Mathematische Annalen.
+                            doi: 10.1007/BF01457454
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            Murray R. Bremner(2012).
+                            <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                                Applications</i>.
+                            Chapman & Hall Pure and Applied Mathematics.
+                            ISBN: 978-1439807026
+                        </span>
+                    </li>
+                    <li>
+                        青野良範，安田雅哉
+                        『格子暗号解読のための数学的基礎』，
+                        2019年．
+                        ISBN 978-4764905986
+                    </li>
+                </ul>
     </article>
 
     <footer></footer>
