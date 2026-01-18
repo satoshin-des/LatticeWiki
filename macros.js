@@ -10,7 +10,8 @@ window.MathJax = {
             R: ["{\\mathbb{R}}"],
             inner: ["{\\left\\langle{#1}\\right\\rangle}", 1],
             det: ["{\\mathrm{det}\\left(#1\\right)}", 1],
-            abs: ["{\\left|{#1}\\right|}", 1]
+            abs: ["{\\left|{#1}\\right|}", 1],
+            od: ["{\\mathrm{od}\\left(#1\\right)}", 1]
         }
     }
 };

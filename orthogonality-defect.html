@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直交性欠陥</title>
+    <style>
+        @import url(style.css);
+    </style>
+    <script src="macros.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
+    <article class="wiki-content">
+        <h1>直交性欠陥</h1>
+        <p>
+            格子の<b>直交性欠陥</b>とは，格子基底の品質を表す指標の一つである．
+            直交性欠陥を小さくすることと，基底がほぼ直交することは対応することが知られているため，良い基底を求める上で重要な指標の一つと言える．
+        </p>
+
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li><a href="#definition">定義</a></li>
+                <li><a href="#od-and-good-basis">直交性欠陥と良い基底</a></li>
+                <li><a href="#upperbounds">代表的な簡約基底における直交性欠陥の上界</a></li>
+                <ul>
+                    <li><a href="#LLL">LLL簡約基底</a></li>
+                    <li><a href="#DeepLLL">DeepLLL簡約基底</a></li>
+                </ul>
+                <li><a href="#example">具体例</a></li>
+                <li><a href="#citation">参考文献</a></li>
+            </ul>
+        </div>
+
+        <h2 id="definition">定義</h2>
+        <p>
+            \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とする．
+            このとき，基底の<b>直交性欠陥</b>は，格子の
+            <a href="volume.html" class="wiki-term" data-desc="格子の不変量の一つ．">
+                体積
+            </a>
+            \(\vol{L}\)を用いて
+            $$
+            \od{\bm{b}_1,\ldots,\bm{b}_n}:=\frac{\prod_{i=1}^n \norm{\bm{b}_i}}{\vol{L}}
+            $$
+            と定義される．
+        </p>
+
+        <h2 id="od-and-good-basis">直交性欠陥と良い基底</h2>
+
+        <p>
+            格子の体積に関する重要な性質
+            $$
+            \vol{L}\le \prod_{i=1}^n \norm{\bm{b}_i}
+            $$
+            から，
+        <div class="scroll-container">
+            $$
+            \od{\bm{b}_1,\ldots,\bm{b}_n}=\frac{\prod_{i=1}^n \norm{\bm{b}_i}}{\vol{L}}\ge \frac{\vol{L}}{\vol{L}}=1
+            $$
+        </div>
+        がわかり，かつ等号成立条件は全ての基底ベクトルが互いに直交することである．
+        即ち，\(\prod_{i=1}^n \norm{\bm{b}_i}\)の値を小さくすること，すなわち基底の直交性欠陥を小さくすることと，基底ベクトルをほとんど直交にすることとが対応していることがわかる．
+        更に，\(\prod_{i=1}^n \norm{\bm{b}_i}\)を小さくすることは，基底ベクトルの長さを短くすることと明らかに対応している．
+        従って，直交性欠陥を小さくすることと，<b>良い基底</b>を求めることとが対応していることがわかる．
+        </p>
+
+        <h2 id="upperbounds">代表的な簡約基底における直交性欠陥の上界</h2>
+
+        <h3 id="LLL">LLL簡約基底</h3>
+
+        <div class="math-block theorem">
+            <span class="math-label">命題</span>
+            <p>
+                \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とし，簡約パラメタ\(\frac{1}{4} < \delta <
+                    1\)についてLLL簡約されているとする． このとき，\(\alpha :=\frac{4}{4\delta -1}\)とすると， $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le \alpha^{\frac{n(n-1)}{4}} $$ が成立する． </p>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    ここでは証明は省略するが，LLL簡約基底について
+                    $$
+                    \prod_{i=1}^n \norm{\bm{b}_i}\le \alpha^{\frac{n(n-1)}{4}} \vol{L}
+                    $$
+                    が成立する
+                    <sup id="cite_ref-1" class="reference">
+                        <a href="#ref-1">[1]</a>
+                    </sup>
+                    ．
+                    従って，
+                <div class="scroll-container">
+                    $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le
+                    \frac{\alpha^{\frac{n(n-1)}{4}}\vol{L}}{\vol{L}}=\alpha^{\frac{n(n-1)}{4}}
+                    $$
+                </div>
+                を得る．
+                </p>
+            </div>
+        </details>
+
+        <h3 id="DeepLLL">DeepLLL簡約基底</h3>
+
+        <div class="math-block theorem">
+            <span class="math-label">命題</span>
+            <p>
+                \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とし，簡約パラメタ\(\frac{1}{4} < \delta <
+                    1\)についてDeepLLL簡約されているとする． このとき，\(\alpha :=\frac{4}{4\delta -1}\)とすると， $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le \left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}} $$ が成立する． </p>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    ここでは証明は省略するが，DeepLLL簡約基底について
+                    $$
+                    \prod_{i=1}^n \norm{\bm{b}_i}\le \left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}\vol{L}
+                    $$
+                    が成立する
+                    <sup id="cite_ref-2" class="reference">
+                        <a href="#ref-2">[2]</a>
+                    </sup>
+                    ．
+                    従って，
+                <div class="scroll-container">
+                    $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le
+                    \frac{\left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}\vol{L}}{\vol{L}}=\left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}
+                    $$
+                </div>
+                を得る．
+                </p>
+            </div>
+        </details>
+
+        <section class="wiki-references-section">
+            <h2 id="reference">出典</h2>
+            <ol class="wiki-references-list">
+                <li id="ref-1">
+                    <span class="reference-text">
+                        Lenstra, Lenstra, and Lovász 1982, Proposition (1.6).
+                    </span>
+                    <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+                <li id="ref-2">
+                    <span class="reference-text">
+                        Yasuda and Yamaguchi 2019, Theorem 1.
+                    </span>
+                    <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+            </ol>
+        </section>
+
+        <h2 id="citation">参考文献</h2>
+
+        <ul>
+            <li>
+                <span class="reference-text">
+                    Murray R. Bremner(2012).
+                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                        Applications</i>.
+                    Chapman & Hall Pure and Applied Mathematics.
+                    ISBN: 978-1439807026
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    青野良範，安田雅哉
+                    『格子暗号解読のための数学的基礎』，
+                    2019年．
+                    ISBN 978-4764905986
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    A. K. Lenstra, H. W. Lenstra, and L. Lovász(1982).
+                    <i>Factoring polynomials with rational coefficients</i>.
+                    Mathematische Annalen.
+                    doi: 10.1007/BF01457454
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    Masaya Yasuda, and Junpei Yamaguchi(2019).
+                    <i>A new polynomial-time variant of LLL with deep insertions for decreasing the squared-sum of
+                        Gram-Schmidt lengths</i>.
+                    Designs, Codes and Cryptography.
+                    doi: 10.1007/s10623-019-00634-9
+                </span>
+            </li>
+        </ul>
+    </article>
+
+    <footer></footer>
+    <script src="footer.js"></script>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>

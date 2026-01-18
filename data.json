@@ -2,11 +2,16 @@
     {
         "title": "ポテンシャル",
         "url": "potential.html",
-        "keywords": "ポテンシャル, potenital"
+        "keywords": "ポテンシャル, ぽてんしゃる, potenital"
     },
     {
         "title": "体積",
         "url": "volume.html",
-        "keywords": "体積, volume，行列式，determinant"
+        "keywords": "体積, volume, 行列式, たいせき, ぎょうれつしき, determinant"
+    },
+    {
+        "title": "直交性欠陥",
+        "url": "orthogonality-defect.html",
+        "keywords": "直交性欠陥, ちょっこうせいけっかん, orthogonality defect"
     }
 ]
