@@ -41,6 +41,7 @@
                     <li><a href="#od-upperbounds">直交性欠陥の上界</a></li>
                 </ul>
                 <li><a href="#algorithm">LLL基底簡約アルゴリズム</a></li>
+                <li><a href="#improvement">実装</a></li>
                 <li><a href="#reference">出典</a></li>
                 <li><a href="#citation">参考文献</a></li>
             </ul>
@@ -273,6 +274,34 @@
                 </li>
             </ol>
         </section>
+
+        <h2>実装</h2>
+
+        LLL基底簡約アルゴリズムは，例えば以下の言語，ソフトウェア，ライブラリで実装されている．
+        尚，以下のリストは飽くまで一例であり，全ての実装を一覧しているわけではないことに注意されたい．
+
+        <h3>言語での実装</h3>
+
+        <ul>
+            <li><a href="https://pari.math.u-bordeaux.fr">PARI/GP</a>：<code>qflll</code>函数によりLLL簡約を行うことができる．</li>
+            <li><a href="https://www.sagemath.org">SageMath</a>：<code>LLL</code>メソッドを呼び出すことでLLL簡約をすることができる．</li>
+        </ul>
+
+        <h3>ソフトウェアでの実装</h3>
+
+        <ul>
+            <li><a href="https://magma.maths.usyd.edu.au/magma/">Magma</a>：<code>LLL</code>函数によりLLL簡約を行うことができる．</li>
+        </ul>
+
+        <h3>ライブラリでの実装</h3>
+        
+        <ul>
+            <li><a href="https://github.com/fplll/fplll">fplll</a></li>
+            <li><a href="https://github.com/satoshin-des/glatl">glatl</a>：<code>LLL</code>函数によりLLL簡約を行うことができる．</li>
+            <li><a href="https://github.com/satoshin-des/liblat">liblat</a>：<code>LLL</code>函数，及び<code>L2</code>函数によりLLL簡約を行うことができる．</li>
+            <li><a href="https://github.com/libntl/ntl">NTL</a>：<code>LLL</code>，<code>LLL_FP</code>，<code>LLL_QQ</code>などの函数によりLLL簡約を行うことができる．</li>
+            <li><a href="https://github.com/orisano/olll">olll</a>：<code>reduction</code>函数によりLLL簡約を行うことができる．</li>
+        </ul>
 
         <h2 id="citation">参考文献</h2>
 
