@@ -553,3 +553,70 @@ footer {
     transform: translateX(-50%) translateY(-10px);
     /* 少し上に移動（浮き上がる演出） */
 }
+
+/* --- アルゴリズム疑似コードのコンテナ --- */
+.algorithm-box {
+    background-color: #f8f9fa;
+    /* 背景：薄いグレー */
+    border: 1px solid #a2a9b1;
+    /* 枠線：Wikiボーダー */
+    border-left: 5px solid #666;
+    /* 左線：アルゴリズムは無彩色で知的に */
+    border-radius: 2px;
+    margin: 1.5em 0;
+    padding: 15px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    /* 等幅フォント */
+    overflow-x: auto;
+    /* 横スクロール対応 */
+}
+
+/* タイトル部分（アルゴリズム名） */
+.algorithm-caption {
+    font-family: var(--wiki-font-sans, sans-serif);
+    /* ここだけゴシック体 */
+    font-weight: bold;
+    border-bottom: 1px solid #eaecf0;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    display: block;
+    color: #000;
+}
+
+/* <code>タグのリセットとスタイル */
+.algorithm-box code {
+    display: block;
+    /* ブロック要素として扱う */
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #202122;
+    white-space: pre;
+    /* スペースと改行をそのまま表示 */
+}
+
+/* --- 手動ハイライト用のクラス --- */
+
+/* キーワード (if, for, return, Input, Output) */
+.kw {
+    font-weight: bold;
+    color: #000;
+}
+
+/* 関数名・変数名 */
+.fn {
+    color: #0645ad;
+    /* Wikiリンク色に近い青 */
+}
+
+/* コメント */
+.com {
+    color: #72777d;
+    /* グレー */
+    font-style: italic;
+}
+
+/* 数値や定数 */
+.num {
+    color: #880000;
+}

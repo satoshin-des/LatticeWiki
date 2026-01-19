@@ -13,5 +13,10 @@
         "title": "直交性欠陥",
         "url": "orthogonality-defect.html",
         "keywords": "直交性欠陥, ちょっこうせいけっかん, orthogonality defect"
+    },
+    {
+        "title": "LLL基底簡約",
+        "url": "lll.html",
+        "keywords": "LLL基底簡約, LLL簡約, Lenstra-Lenstra-Lovasz基底簡約"
     }
 ]
