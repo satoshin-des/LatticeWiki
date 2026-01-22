@@ -34,18 +34,12 @@
             <strong>目次</strong>
             <ul>
                 <li><a href="#definition">概要</a></li>
+                <li><a href="#verification">実験による仮定の検証</a></li>
                 <ul>
-                    <li><a href="#iff-rwr">Lovász条件の同値な書き換え</a></li>
+                    <li><a href="#before">簡約を施す前</a></li>
+                    <li><a href="#lll">LLL簡約基底</a></li>
+                    <li><a href="#bkz">BKZ簡約基底</a></li>
                 </ul>
-                <li><a href="#property">性質</a></li>
-                <ul>
-                    <li><a href="#upperbounds">LLL簡約基底の上界</a></li>
-                    <li><a href="#od-upperbounds">直交性欠陥の上界</a></li>
-                </ul>
-                <li><a href="#algorithm">LLL基底簡約アルゴリズム</a></li>
-                <li><a href="#implementation">実装</a></li>
-                <li><a href="#reference">出典</a></li>
-                <li><a href="#citation">参考文献</a></li>
             </ul>
         </div>
 
@@ -70,7 +64,7 @@
                 0)\)，切片\(0\)の直線になることを主張している． そのため，横軸がインデックスにとったときの\(\log
                 \frac{\norm{\bm{b}_{i}^\star}^2}{\norm{\bm{b}_1}^2}\)のグラフなどをGSAと呼ぶこともある． </p>
 
-                <h2>実験による仮定の検証</h2>
+                <h2 id="verification">実験による仮定の検証</h2>
 
                 下に示すSageMathのコードにより格子基底を生成し，生成された格子基底に対して基底簡約を施し，近似的に仮定を満足するかを検証する．
                 <div class="algorithm-box">
@@ -86,7 +80,7 @@ b = <span class="fn">identity_matrix</span>(<span class="kw">ZZ</span>, <span cl
     </code>
                 </div>
 
-                <h3>簡約を施す前</h3>
+                <h3 id="before">簡約を施す前</h3>
 
                 <figure class="wiki-image-block">
                     <img src="raw_slope.png" alt="簡約を施す前のGSAと，その近似直線">
@@ -96,7 +90,7 @@ b = <span class="fn">identity_matrix</span>(<span class="kw">ZZ</span>, <span cl
                     </figcaption>
                 </figure>
 
-                <h3>LLL簡約基底</h3>
+                <h3 id="lll">LLL簡約基底</h3>
 
                 <figure class="wiki-image-block">
                     <img src="lll_slope.png" alt="LLL簡約基底のGSAと，その近似直線">
@@ -106,7 +100,7 @@ b = <span class="fn">identity_matrix</span>(<span class="kw">ZZ</span>, <span cl
                     </figcaption>
                 </figure>
 
-                <h3>BKZ簡約基底</h3>
+                <h3 id="bkz">BKZ簡約基底</h3>
 
                 <figure class="wiki-image-block">
                     <img src="bkz_slope_40.png" alt="BKZ簡約基底のGSAと，その近似直線">
