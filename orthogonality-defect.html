@@ -140,8 +140,7 @@
                     従って，
                 <div class="scroll-container">
                     $$
-                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le
-                    \frac{\left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}\vol{L}}{\vol{L}}=\left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le \left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}
                     $$
                 </div>
                 を得る．
@@ -150,6 +149,43 @@
         </details>
 
         <h3 id="HKZ">HKZ簡約基底</h3>
+
+        <div class="math-block theorem">
+            <span class="math-label">命題</span>
+            <p>
+                \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とし，HKZ簡約されているとする．
+                このとき，
+                $$
+                \od{\bm{b}_1,\ldots,\bm{b}_n}\le \left(\frac{\gamma_n}{4}\right)^{\frac{n}{2}} \sqrt{\frac{(n+3)!}{6}}
+                $$
+                が成立する．
+            </p>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    ここでは証明は省略するが，HKZ簡約基底について
+                    $$
+                    \prod_{i=1}^n \norm{\bm{b}_i}^2\le \left(\gamma_n^n \prod_{i=1}^n \frac{i+3}{4}\right) \vol{L}^2
+                    $$
+                    が成立する
+                    <sup id="cite_ref-3" class="reference">
+                        <a href="#ref-3">[3]</a>
+                    </sup>
+                    ．
+                    従って，
+                <div class="scroll-container">
+                    $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le \left(\frac{\gamma_n}{4}\right)^{\frac{n}{2}}
+                    \sqrt{\frac{(n+3)!}{6}}
+                    $$
+                </div>
+                を得る．
+                </p>
+            </div>
+        </details>
 
         <section class="wiki-references-section">
             <h2 id="reference">出典</h2>
@@ -165,6 +201,12 @@
                         Yasuda and Yamaguchi 2019, Theorem 1.
                     </span>
                     <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+                <li>
+                    <span class="reference-text">
+                        Lagarias, Lenstra, and Schnorr 1990, Theorem 2.3
+                    </span>
+                    <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
                 </li>
             </ol>
         </section>
@@ -204,6 +246,14 @@
                         Gram-Schmidt lengths</i>.
                     Designs, Codes and Cryptography.
                     doi: 10.1007/s10623-019-00634-9
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    Jeffrey C. Lagarias, Hendrik W. Lenstra, and Claus Peter Schnorr(1990).
+                    <i>Korkin-Zolotarev bases and successive minima of a lattice and its reciprocal lattice</i>.
+                    Combinatorica.
+                    doi: 10.1007/BF02128669
                 </span>
             </li>
         </ul>
