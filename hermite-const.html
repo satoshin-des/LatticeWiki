@@ -67,7 +67,7 @@
                     \(\mathscr{B}(\bm{x}, r)\)を\(\bm{x}\in \R^m\)を中心とする半径\(r>0\)の開球とし，集合\(S\)を
                 <div class="scroll-container">
                     $$
-                    S:=\mathscr{B}\left\{\bm{0}, \sqrt{n} \vol{L}^{\frac{1}{n}}\right\}\cap \span{L}
+                    S:=\mathscr{B}\left(\bm{0}, \sqrt{n} \vol{L}^{\frac{1}{n}}\right)\cap \span{L}
                     $$
                 </div>
                 とする．
@@ -104,38 +104,216 @@
                     \(\displaystyle \gamma_{24}=4\)
                 </p>
 
-                <section class="wiki-references-section">
-                    <h2 id="reference">出典</h2>
-                    <ol class="wiki-references-list">
-                        <li id="ref-1">
+                <h2>Hermiteの定数の上界</h2>
+
+                <div class="math-block theorem">
+                    <span class="math-label">定理（Minkowski）</span>
+                    <p>
+                        任意の\(n\in \N\)に対して，\(\nu_n\)を\(n\)次元単位超球の体積とすると，
+                        $$
+                        \gamma_n \le 4\nu_n^{-\frac{2}{n}}
+                        $$
+                        が成立する．
+                    </p>
+                </div>
+
+                <p>
+                    \(n\)次元単位超球の体積\(\nu_n\)に対して，
+                <div class="scroll-container">
+                    $$
+                    \nu_n = \frac{\pi^{\frac{n}{2}}}{\Gamma\left(1+\frac{n}{2}\right)}
+                    $$
+                </div>
+                であったので，
+                <div class="scroll-container">
+                    $$
+                    \gamma_n \le 4\left\{
+                    \frac{\pi^{\frac{n}{2}}}{\Gamma\left(1+\frac{n}{2}\right)}\right\}^{-\frac{2}{n}}
+                    $$
+                </div>
+                という上界が得られる．
+                </p>
+
+                <div class="math-block theorem">
+                    <span class="math-label">定理（Wen and Chang<sup id="cite_ref-2" class="reference"><a
+                                href="#ref-2">[2]</a></sup>）</span>
+                    <p>
+                    <div class="scroll-container">
+                        $$
+                        \forall n\in \N \left( \gamma_n < \frac{n}{8}+\frac{6}{5}\right) $$ </div>
+                            </p>
+                    </div>
+
+                    <details class="wiki-proof">
+                        <summary>証明</summary>
+                        <div class="proof">
+                            <p>
+                                Minkowskiの定理から，
+                                <div class="scroll-container">
+                                $$
+                                \gamma_n \le 4\left\{
+                                \frac{\pi^{\frac{n}{2}}}{\Gamma\left(1+\frac{n}{2}\right)}\right\}^{-\frac{2}{n}}
+                                $$
+                                </div>
+                                であったので，
+                                <div class="scroll-container">
+                                    $$
+                                    \begin{aligned}
+                                    &4\left\{
+                                \frac{\pi^{\frac{n}{2}}}{\Gamma\left(1+\frac{n}{2}\right)}\right\}^{-\frac{2}{n}} <  \frac{n}{8}+\frac{6}{5}\\
+                                    \iff & \Gamma\left(2+\frac{n}{2}\right)^2 < \left\{\frac{\pi(n+9.6)}{16}\right\}^n
+                                    \end{aligned}
+                                    $$
+                                </div>
+                                が示せればよい．
+                                ここで，
+                                <div class="scroll-container">
+                                    $$
+                                    \forall x\ge 1 \left(\Gamma(1+x)< x^x e^{-x}\sqrt{2\pi\left(x+\frac{e^2}{2\pi}-1\right)}\right)
+                                    $$
+                                </div>
+                                であるので<sup id="cite_ref-3" class="reference"><a href="#ref-3">[3]</a></sup>，示すべきは
+                                <div class="scroll-container">
+                                    $$
+                                    \forall n\in \N\left(\left(1+\frac{n}{2}\right)^2 \left(\frac{n}{2}\right)^n e^{-n}\left(\pi n+e^2-2\pi \right)< \left(\frac{\pi (n+9.6)}{16} \right)^n\right)
+                                    $$
+                                </div>
+                                に移る．
+                                従って，
+                                <div class="scroll-container">
+                                    $$
+                                    \forall t\in \{1, 1.5, 2, \ldots\}\left(\frac{\left\{\frac{e\pi}{8}\left(1+\frac{t}{4.8}\right)\right\}^{2t}}{(1+t)^2 (2\pi t+e^2-2\pi)} > 1\right)
+                                    $$
+                                </div>
+                                を示せばよい．
+                                <div class="scroll-container">
+                                    $$
+                                    \phi(t):=\frac{\left\{\frac{e\pi}{8}\left(1+\frac{t}{4.8}\right)\right\}^{2t}}{(1+t)^2 (2\pi t+e^2-2\pi)}
+                                    $$
+                                </div>
+                                と置くと，直接代入することにより，\(t\le 15\)の場合に成立することがわかる．
+                                従って，\(\psi(t):=\log \phi(t)\)が\(t \ge 15\)で単調増加であることが示せれば十分である．
+                                \(\alpha := \frac{e^2}{2\pi}-1=0.176004...\)とすると，
+                                <div class="scroll-container">
+                                    $$
+                                    \psi(t)=2t \log \frac{e\pi}{8}+2t \log\left(1+\frac{4.8}{t}\right)-2 \log(t+1)-\log(2\pi (t+\alpha))
+                                    $$
+                                </div>
+                                であり，この\(t\)による微分は
+                                <div class="scroll-container">
+                                    $$
+                                    \dv{t}\psi(t)=2\log\frac{e\pi}{8}+2\log{\left(1+\frac{4.8}{t}\right)}-\frac{9.6}{t+4.8}-\frac{2}{t+1}-\frac{1}{t+\alpha}
+                                    $$
+                                </div>
+                                である．
+                                ここで，
+                                <div class="scroll-container">
+                                    $$
+                                    \forall x\ge 0\left( \log(1+x)\ge \frac{2x}{2+x}\right)
+                                    $$
+                                </div>
+                                であるので<sup id="cite_ref-4" class="reference"><a href="#ref-4">[4]</a></sup>，
+                                <div class="scroll-container">
+                                    $$
+                                    \dv{t}\psi(t)\ge 2\log\frac{e\pi}{8}+\frac{9.6}{t+2.4}-\frac{9.6}{t+4.8}-\frac{2}{t+1}-\frac{1}{t+\alpha}
+                                    $$
+                                </div>
+                                となる．
+                                ここで，
+                                <div class="scroll-container">
+                                    $$
+                                    \rho(t):=2\log\frac{e\pi}{8}+\frac{9.6}{t+2.4}-\frac{9.6}{t+4.8}-\frac{2}{t+1}-\frac{1}{t+\alpha}
+                                    $$
+                                </div>
+                                とおくと，\(t\ge 0\)で\(\left.\dv{t}\psi(t)\right|_{t=15}\ge \rho(15)=0.006558...>0\)である．
+                                よって，\(\rho(t)\)が\(t\ge 15\)で単調増加であることが示せれば十分である．
+                                <div class="scroll-container">
+                                    $$
+                                    \begin{aligned}
+                                    \dv{t}\rho(t)&=-\frac{9.6}{(t+2.4)^2}+\frac{9.6}{(t+4.8)^2}+\frac{2}{(t+1)^2}+\frac{1}{(t+\alpha)^2}\\
+                                    &>-\frac{9.6}{(t+2.4)^2}+\frac{9.6}{(t+4.8)^2}+\frac{2}{(t+2.4)^2}+\frac{1}{(t+2.4)^2}\\
+                                    &=\frac{1}{(t+2.4)^2}\left\{9.6\frac{(t+2.4)^2}{(t+4.8)^2}-6.6\right\}
+                                    \end{aligned}
+                                    $$
+                                </div>
+                                であり，
+                                <div class="scroll-container">
+                                    $$
+                                    \dv{t}\left[9.6\frac{(t+2.4)^2}{(t+4.8)^2}-6.6\right]=\frac{46.08t+110.592}{(t+4.8)^3}>0\quad (t\ge 0)
+                                    $$
+                                </div>
+                                より，\(9.6\frac{(t+2.4)^2}{(t+4.8)^2}-6.6\)は\(t\ge 0\)で単調増加且つ\(t=15\)のとき\(0.813774...>0\)なので，\(t\ge 15\)で\(\dv{t}\rho(t)>0\)である．
+                                以上より，定理を得る．
+                            </p>
+                        </div>
+                    </details>
+
+                    <section class="wiki-references-section">
+                        <h2 id="reference">出典</h2>
+                        <ol class="wiki-references-list">
+                            <li id="ref-1">
+                                <span class="reference-text">
+                                    青野，安田 2019
+                                </span>
+                                <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                            </li>
+                            <li id="ref-2">
+                                <span class="reference-text">
+                                    Wen, and Chang 2018, Theorem. 1
+                                </span>
+                                <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                            </li>
+                            <li id="ref-3">
+                                <span class="reference-text">
+                                     Batir 2008, Theorem. 1.6
+                                </span>
+                                <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
+                            </li>
+                            <li id="ref-4">
+                                <span class="reference-text">
+                                     Topsøe 2004, pp. 2
+                                </span>
+                                <a href="#cite_ref-4" class="back-to-text" title="本文に戻る">^</a>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <h2 id="citation">参考文献</h2>
+
+                    <ul>
+                        <li>
                             <span class="reference-text">
-                                青野，安田 2019
+                                青野良範，安田雅哉
+                                『格子暗号解読のための数学的基礎』，
+                                2019年．
+                                ISBN 978-4764905986
                             </span>
-                            <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
                         </li>
-                    </ol>
-                </section>
-
-                <h2 id="citation">参考文献</h2>
-
-                <ul>
-                    <li>
-                        <span class="reference-text">
-                            青野良範，安田雅哉
-                            『格子暗号解読のための数学的基礎』，
-                            2019年．
-                            ISBN 978-4764905986
-                        </span>
-                    </li>
-                    <li>
-                        <span class="reference-text">
-                            Claus Peter Schnorr(2003).
-                            <i>Lattice reduction by random sampling and birthday methods</i>.
-                            Symposium on Theoretical Aspects of Computer Science (STACS2003).
-                            doi: 10.1007/3-540-36494-3_14
-                        </span>
-                    </li>
-                </ul>
+                        <li>
+                            <span class="reference-text">
+                                Jinming Wen and Xiao-Wen Chang(2018).
+                                <i>On the KZ Reduction</i>.
+                                IEEE Transactions on Information Theory.
+                                doi: 10.48550/arXiv.1702.08152
+                            </span>
+                        </li>
+                        <li>
+                            <span class="reference-text">
+                                Necdet Batir(2008).
+                                <i>Inequalities for the gamma function</i>.
+                                Archiv der Mathematik.
+                                doi: 10.1007/s00013-008-2856-9
+                            </span>
+                        </li>
+                        <li>
+                            <span class="reference-text">
+                                Flemming Topsøe(2004).
+                                <i>Some bounds for the logarithmic function</i>.
+                                Research Group in Mathematical Inequalities and Applications (RGMIA).
+                                url: <a href="https://rgmia.org/papers/v7n2/pade.pdf">https://rgmia.org/papers/v7n2/pade.pdf</a>（2026年1月24日閲覧）
+                            </span>
+                        </li>
+                    </ul>
     </article>
 
     <footer></footer>

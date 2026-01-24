@@ -13,7 +13,8 @@ window.MathJax = {
             det: ["{\\mathrm{det}\\left(#1\\right)}", 1],
             abs: ["{\\left|{#1}\\right|}", 1],
             od: ["{\\mathrm{od}\\left(#1\\right)}", 1],
-            span: ["{\\mathrm{span}_{\\R}\\left(#1\\right)}", 1]
+            span: ["{\\mathrm{span}_{\\R}\\left(#1\\right)}", 1],
+            dv: ["{\\frac{\\mathrm{d}}{\\mathrm{d}#1}}", 1]
         }
     }
 };
