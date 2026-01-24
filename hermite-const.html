@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermiteの定数</title>
+    <style>
+        @import url(style.css);
+    </style>
+    <script src="macros.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
+    <article class="wiki-content">
+        <h1>Hermiteの定数</h1>
+        <p>
+            <b>Hermiteの定数</b>（<b>Hermite's constant</b>）とは，最短ベクトルのノルムと格子の<a href="volume.html" class="wiki-term"
+                data-desc="格子の不変量の一つ．">体積</a>の\(1/n\)乗の商の上限のことである．
+        </p>
+
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li><a href="#definition">概要</a></li>
+                <li><a href="#boundedness">Hermiteの定数の有界性</a></li>
+            </ul>
+        </div>
+
+        <h2 id="definition">定義</h2>
+        <p>
+            \(\mathscr{L}_n\)を\(n\)次元格子全体の集合とする．
+            このとき，\(\lambda_1(L)\)を格子\(L\)の最短ベクトルのノルムとしたとき，任意の\(L\in
+            \mathscr{L}_n\)に対して，\(\frac{\lambda_1(L)^2}{\vol{L}^{\frac{2}{n}}}\)は上に有界である．
+            $$
+            \gamma_n:=\sup_{L\in \mathscr{L}_n}\left\{\frac{\lambda_1(L)^2}{\vol{L}^{\frac{2}{n}}}\right\}
+            $$
+            をHermiteの定数と呼ぶ．
+        </p>
+
+        <h2 id="boundedness">Hermiteの定数の有界性</h2>
+
+        <div class="math-block theorem">
+            <span class="math-label">定理（Minkowski）</span>
+            <p>
+                任意の\(n\)次元格子\(L\subseteq \R^m\)に対して，
+                $$
+                \lambda_1(L)< \sqrt{n}\vol{L}^{\frac{1}{n}} $$ が成立する． </p>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    \(\mathscr{B}(\bm{x}, r)\)を\(\bm{x}\in \R^m\)を中心とする半径\(r>0\)の開球とし，集合\(S\)を
+                <div class="scroll-container">
+                    $$
+                    S:=\mathscr{B}\left\{\bm{0}, \sqrt{n} \vol{L}^{\frac{1}{n}}\right\}\cap \span{L}
+                    $$
+                </div>
+                とする．
+                このとき，\(S\)は明らかに原点対称な凸集合である．
+                また，\(S\)は一辺が\(2\vol{L}^{\frac{1}{n}}\)の\(n\)次元超立方体の各頂点以外を含むので，体積は\(2^n \vol{L}\)よりも大きい．
+                従って，Minkowskiの凸体定理から
+                $$
+                \lambda_1(L)\le \sqrt{n} \vol{L}^{\frac{1}{n}}
+                $$
+                が従う．
+                </p>
+            </div>
+        </details>
+
+        Minkowskiの定理から，
+        <div class="scroll-container">
+            $$
+            \forall L\in \mathscr{L}_n \left(\frac{\lambda_1(L)^2}{\vol{L}^{\frac{2}{n}}}< n\right) $$ </div>
+                が従い，即ち\(\gamma_n\)が上に有界であることがわかる．
+
+                <h2 id="">既知のHermiteの定数の値</h2>
+
+                <p>
+                    いくつかの小さな整数についてはHermiteの定数の値が知られている<sup id="cite_ref-1" class="reference"><a href="#ref-1">[1]</a></sup>：<br>
+                    \(\displaystyle \gamma_1=1\)<br>
+                    \(\displaystyle \gamma_2=\frac{2}{\sqrt{3}}=1.154700...\)<br>
+                    \(\displaystyle \gamma_3=\sqrt[3]{2}=1.259921...\)<br>
+                    \(\displaystyle \gamma_4=\sqrt{2}=1.414213...\)<br>
+                    \(\displaystyle \gamma_5=\sqrt[5]{8}=1.515716...\)<br>
+                    \(\displaystyle \gamma_6=\sqrt[6]{\frac{64}{3}}=1.665366...\)<br>
+                    \(\displaystyle \gamma_7=\sqrt[7]{64}=1.811447...\)<br>
+                    \(\displaystyle \gamma_8=2\)<br>
+                    \(\displaystyle \gamma_{24}=4\)
+                </p>
+
+                <section class="wiki-references-section">
+                    <h2 id="reference">出典</h2>
+                    <ol class="wiki-references-list">
+                        <li id="ref-1">
+                            <span class="reference-text">
+                                青野，安田 2019
+                            </span>
+                            <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                    </ol>
+                </section>
+
+                <h2 id="citation">参考文献</h2>
+
+                <ul>
+                    <li>
+                        <span class="reference-text">
+                            青野良範，安田雅哉
+                            『格子暗号解読のための数学的基礎』，
+                            2019年．
+                            ISBN 978-4764905986
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            Claus Peter Schnorr(2003).
+                            <i>Lattice reduction by random sampling and birthday methods</i>.
+                            Symposium on Theoretical Aspects of Computer Science (STACS2003).
+                            doi: 10.1007/3-540-36494-3_14
+                        </span>
+                    </li>
+                </ul>
+    </article>
+
+    <footer></footer>
+    <script src="footer.js"></script>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>
