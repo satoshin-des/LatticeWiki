@@ -18,5 +18,15 @@
         "title": "LLL基底簡約",
         "url": "lll.html",
         "keywords": "LLL基底簡約, LLL簡約, Lenstra-Lenstra-Lovasz基底簡約"
+    },
+    {
+        "title": "幾何級数仮定",
+        "url": "gsa.html",
+        "keywords": "幾何級数仮定, きかきゅうすうかてい, gsa, geometry series assumption"
+    },
+    {
+        "title": "Hermiteの定数",
+        "url": "hermite-const.html",
+        "keywords": "Hermiteの定数, エルミートの定数, Hermite's constant, えるみーとのていすう"
     }
 ]
