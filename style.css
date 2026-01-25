@@ -672,3 +672,62 @@ footer {
     word-wrap: break-word;
     /* 長い単語でのレイアウト崩れ防止 */
 }
+
+/* --- Wikipedia風 シンプルテーブル --- */
+
+/* テーブル全体の設定 */
+.wiki-table {
+    width: 100%;
+    /* 横幅いっぱい（親要素に合わせる） */
+    border-collapse: collapse;
+    /* 枠線を重ねて1本にする */
+    margin: 1.5em 0;
+    /* 上下の余白 */
+    font-size: 0.95em;
+    /* 本文よりわずかに小さくして情報を詰め込む */
+    border: 1px solid #a2a9b1;
+    /* 外枠 */
+    background-color: #fff;
+}
+
+/* ヘッダーセル (th) */
+.wiki-table th {
+    background-color: #eaecf0;
+    /* 薄いグレーの背景 */
+    color: #202122;
+    font-weight: bold;
+    padding: 10px 15px;
+    /* 内側の余白 */
+    text-align: left;
+    /* 左寄せ（中央寄せがいい場合は center） */
+    border: 1px solid #a2a9b1;
+    /* 枠線 */
+}
+
+/* データセル (td) */
+.wiki-table td {
+    padding: 8px 15px;
+    border: 1px solid #a2a9b1;
+    color: #202122;
+    vertical-align: top;
+    /* 複数行ある場合、上揃えの方が見やすい */
+}
+
+/* 偶数行の色を変える（ゼブラストライプ） */
+.wiki-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* マウスを乗せた時のハイライト */
+.wiki-table tr:hover {
+    background-color: #eaf3ff;
+    /* 薄い青色 */
+    transition: background-color 0.1s;
+}
+
+/* --- スマホ対策（横スクロール） --- */
+/* 表が画面幅より広い場合、自動的にスクロールバーを出すラッパー */
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
