@@ -17,7 +17,7 @@
     {
         "title": "LLL基底簡約",
         "url": "lll.html",
-        "keywords": "LLL基底簡約, LLL簡約, Lenstra-Lenstra-Lovasz基底簡約"
+        "keywords": "LLL基底簡約, LLL簡約, Lenstra-Lenstra-Lovasz基底簡約, LLL-reduction"
     },
     {
         "title": "幾何級数仮定",
@@ -28,5 +28,10 @@
         "title": "Hermiteの定数",
         "url": "hermite-const.html",
         "keywords": "Hermiteの定数, エルミートの定数, Hermite's constant, えるみーとのていすう"
+    },
+    {
+        "title": "DeepLLL基底簡約",
+        "url": "deeplll.html",
+        "keywords": "DeepLLL基底簡約, LLL with deep-insertion, DeepLLL-reduction"
     }
 ]

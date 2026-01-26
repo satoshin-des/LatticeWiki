@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepLLL基底簡約</title>
+    <style>
+        @import url(style.css);
+    </style>
+    <script src="macros.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
+    <article class="wiki-content">
+        <h1>DeepLLL基底簡約</h1>
+        <p>
+            <b>DeepLLL基底簡約</b>（<b>DeepLLL lattice basis
+                reduction</b>），<b>DEEP</b>，もしくは<b>LLL with deeo-insertion</b>とは，古典的な格子基底簡約アルゴリズムの一つである．
+            DeepLLL基底簡約によって簡約された格子基底を<b>DeepLLL簡約基底</b>などと呼ぶ．
+        </p>
+
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li><a href="#definition">定義</a></li>
+                <li><a href="#property">性質</a></li>
+                <ul>
+                    <li><a href="#upperbounds">DeepLLL簡約基底の上界</a></li>
+                    <li><a href="#od-upperbounds">直交性欠陥の上界</a></li>
+                </ul>
+                <li><a href="#algorithm">DeepLLL基底簡約アルゴリズム</a></li>
+                <li><a href="#implementation">実装</a></li>
+                <li><a href="#reference">出典</a></li>
+                <li><a href="#citation">参考文献</a></li>
+            </ul>
+        </div>
+
+        <h2 id="definition">定義</h2>
+        <p>
+            \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とする．
+            このとき，基底が簡約パラメタ\(\frac{1}{4} < \delta < 1\)について<b>DeepLLL簡約</b>されているとは，
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    & (i) & & 1\le \forall j < \forall i\le n\left(\abs{\mu_{i, j}}\le\frac{1}{2}\right)\\ & (ii) & &
+                        1\le \forall i< \forall k\le n\left(\delta\cdot
+                        \norm{\bm{b}_i^{\star}}^2\le\norm{\pi_i(\bm{b}_k)}^2\right) \end{aligned} $$ </div>
+                        の二条件を満足するときをいう． 但し， <div class="scroll-container">
+                            $$
+                            \left\{
+                            \begin{aligned}
+                            & \pi_\ell : \R^n \longrightarrow \langle \bm{b}_1, \dots, \bm{b}_{\ell-1}
+                            \rangle_\mathbb{R}^\perp
+                            =
+                            \langle \bm{b}_\ell^\star, \dots, \bm{b}_n^\star \rangle_\R, \\
+                            & \pi_\ell(\bm{x}) := \sum_{i = \ell}^n \frac{\langle \bm{x}, \bm{b}_i^\star
+                            \rangle}{\norm{\bm{b}_i^\star}^2}
+                            \bm{b}_i^\star
+                            \end{aligned}
+                            \right.
+                            $$
+                        </div>
+                        は\(\langle \bm{b}_1, \dots, \bm{b}_{\ell-1} \rangle_\mathbb{R}\)の直交補空間への直交射影とする．
+                        特に条件(i)を<b>サイズ簡約条件</b>，条件(ii)を<b>deep-exchange条件</b>（<b>deep-exchange
+                            condition</b>）と呼ぶ．
+        </p>
+
+        <h2 id="property">性質</h2>
+
+        <h3 id="upperbounds">DeepLLL簡約基底の上界</h3>
+
+        <div class="math-block theorem">
+            <span class="math-label">定理（Yasuda and Yamaguchi
+                <sup id="cite_ref-1" class="reference">
+                    <a href="#ref-1">[1]</a>
+                </sup>
+                ）</span>
+            <p>
+                \(n\)次元格子\(L\)の基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)は\(\frac{1}{4}<\delta<
+                    1\)に対してLLL簡約されているとし，\(\alpha:=\frac{4}{4\delta-1}\)とする． このとき <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    & (i) & & 1\le \forall i < \forall k\le n\left(\norm{\bm{b}_i^{\star}}^2\le \alpha
+                        \left(1+\frac{\alpha}{4}\right)^{k-i-1}\norm{\bm{b}_k^{\star}}^2\right)\\ & (ii) & &
+                        \norm{\bm{b}_1}\le \alpha^\frac{n-1}{2n}\left(1+\frac{\alpha}{4}\right)^\frac{(n-1)(n-2)}{4n}
+                        \vol{L}^{\frac{1}{n}}\\ & (iii) & & 1\le \forall i\le n\left(\norm{\bm{b}_i}\le
+                        \sqrt{\alpha\left(1+\frac{\alpha}{4}\right)^{(n-2)}}\lambda_i(L)\right)\\ & (iv) & &
+                        \prod_{i=1}^n \norm{\bm{b}_i}\le \left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}\vol{L}
+                        \end{aligned} $$ </div>
+                        が成立する．
+            </p>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    (i) まず，\(2\le k\le n\)を固定する．
+                    この上で\(i\)に関する数学的帰納法によって証明する．<br>
+                    \(i=k-1\)のとき，証明すべきは
+                    $$
+                    \norm{\bm{b}_{k-1}^\star}^2\le \alpha \norm{\bm{b}_k^\star}^2
+                    $$
+                    であるが，これはDeepLLL簡約基底が明らかにLLL簡約基底であることから明らかである．<br>
+                    \(2\le j\le k-1\)のときまで，(i)が成立すると仮定する．
+                    このとき
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    \delta\cdot \norm{\bm{b}_{j-1}^\star}^2&\le\norm{\pi_{j-1}(\bm{b}_k)}^2\\
+                    &=\norm{\sum_{h=j-1}^k \mu_{k, h}\bm{b}_h^\star}^2\\
+                    &\le \norm{\bm{b}_k^\star}^2+\frac{1}{4}\sum_{h=j-1}^{k-1}\norm{\bm{b}_h^\star}^2
+                    \end{aligned}
+                    $$
+                </div>
+                が成立する．
+                従って数学的帰納法の仮定より，
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    \left(\delta-\frac{1}{4}\right)\norm{\bm{b}_{j-1}^\star}^2&\le
+                    \norm{\bm{b}_k}^2+\frac{1}{4}\sum_{h=j}^{k-1}\norm{\bm{b}_h^\star}^2\\
+                    &\le\left\{1+\frac{\alpha}{4}\sum_{h=j}^{k-1}\left(1+\frac{\alpha}{4}\right)^{k-h-1}\right\}\norm{\bm{b}_k^\star}^2\\
+                    &=\left(1+\frac{\alpha}{4}\right)^{k-j}\norm{\bm{b}_k^\star}^2
+                    \end{aligned}
+                    $$
+                </div>
+                が成立する．
+                よって従う．<br>
+                (ii) (i)より，
+                <div class="scroll-container">
+                    $$
+                    2\le \forall k \le
+                    n\left(\norm{\bm{b}_1}\le\alpha\left(1+\frac{\alpha}{4}\right)^{k-2}\norm{\bm{b}_k^\star}^2\right)
+                    $$
+                </div>
+                が成立する．
+                これを全ての\(2\le k\le n\)でかけ合わせれば，
+                <div class="scroll-container">
+                    $$
+                    \norm{\bm{b}_1}^{2n-2}
+                    \le\prod_{k=2}^n\left[\alpha\left(1+\frac{\alpha}{4}\right)^{k-2}\norm{\bm{b}_k^\star}^2\right]
+                    $$
+                </div>
+                である．
+                よって
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    \norm{\bm{b}_1}^{2n}
+                    &\le\norm{\bm{b}_1^\star}^2\prod_{k=2}^n\left[\alpha\left(1+\frac{\alpha}{4}\right)^{k-2}\norm{\bm{b}_k^\star}^2\right]\\
+                    &\le \alpha^{n-1}\left(1+\frac{\alpha}{4}\right)^\frac{(n-1)(n-2)}{2} \vol{L}^2
+                    \end{aligned}
+                    $$
+                </div><br>
+                (iii) (i)より，任意の\(1\le i\le n\)に対して
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    \norm{\bm{b}_i}^2&\le\norm{\bm{b}_i^\star}^2+\frac{1}{4}\sum_{j=1}^{i-1}\norm{\bm{b}_j^\star}^2\\
+                    &\le\left\{1+\frac{1}{4}\sum_{j=1}^{i-1}\left[\alpha
+                    \left(1+\frac{\alpha}{4}\right)^{i-j-1}\right]\right\}\norm{\bm{b}_i^\star}^2\\
+                    &=\left(1+\frac{\alpha}{4}\right)^{i-1}\norm{\bm{b}_i^\star}^2
+                    \end{aligned}
+                    $$
+                </div>
+                が成立する．
+                他方で，(i)より，任意の\(1\le i\le n\)に対して
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    \norm{\bm{b}_i^\star}&\le\alpha \left(1+\frac{\alpha}{4}\right)^{j-i-1}
+                    \norm{\bm{b}_j^\star}^2&\left( \norm{\bm{b}_j^\star}^2=\min_{i\le j\le n} \norm{\bm{b}_j^\star}^2
+                    \right)\\
+                    &\le \alpha \left(1+\frac{\alpha}{4}\right)^{n-i-1}\min_{i\le j\le n} \norm{\bm{b}_j^\star}^2&
+                    \end{aligned}
+                    $$
+                </div>
+                が成立する．
+                よって
+                <div class="scroll-container">
+                    $$
+                    \norm{\bm{b}_i}^2 \le \left(1+\frac{\alpha}{4}\right)^{i-1}\norm{\bm{b}_i^\star}^2 \le
+                    \alpha\left(1+\frac{\alpha}{4}\right)^{n-2}\lambda_i(L)^2
+                    $$
+                </div>
+                である．<br>
+                (iv) (iii)の途中式を\(1\le i\le n\)でかけ合わせれば
+                <div class="scroll-container">
+                    $$
+                    \prod_{i=1}^n\norm{\bm{b}_i}^2\le
+                    \prod_{i=1}^n\left[\left(1+\frac{\alpha}{4}\right)^{i-1}\norm{\bm{b}_i^\star}^2\right]=\left(1+\frac{\alpha}{4}\right)^\frac{n(n-1)}{2}\vol{L}^2
+                    $$
+                </div>
+                を得る．
+                </p>
+            </div>
+        </details>
+
+        <h3 id="od-upperbounds">直交性欠陥の上界</h3>
+
+        基底の<a href="orthogonality-defect.html" class="wiki-term" data-desc="格子基底の品質を表す指標の一つ．">直交性欠陥</a>は，格子の<a
+            href="volume.html" class="wiki-term" data-desc="格子の不変量の一つ．">体積</a>
+        \(\vol{L}\)を用いて
+        $$
+        \od{\bm{b}_1,\ldots,\bm{b}_n}:=\frac{\prod_{i=1}^n \norm{\bm{b}_i}}{\vol{L}}
+        $$
+        と定義される量であった．
+
+        <div class="math-block theorem">
+            <span class="math-label">命題</span>
+            <p>
+                \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とし，簡約パラメタ\(\frac{1}{4} < \delta <
+                    1\)についてLLL簡約されているとする． このとき，\(\alpha :=\frac{4}{4\delta -1}\)とすると， $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le \left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}} $$ が成立する． </p>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    上の定理から
+                <div class="scroll-container">
+                    $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le \left(1+\frac{\alpha}{4}\right)^{\frac{n(n-1)}{4}}
+                    $$
+                </div>
+                を得る．
+                </p>
+            </div>
+        </details>
+
+        <h2 id="algorithm">DeepLLL基底簡約アルゴリズム</h2>
+
+        <div class="algorithm-box">
+            <span class="algorithm-caption">アルゴリズム 1: DeepLLL基底簡約アルゴリズム
+                <sup id="cite_ref-2" class="reference">
+                    <a href="#ref-2">[2]</a>
+                </sup>
+            </span>
+            <code>
+<span class="kw">Input:</span> 基底 b=[b[1],..., b[n]], 簡約パラメタ delta
+<span class="kw">Output:</span> DeepLLL簡約基底 b
+
+<span class="kw">function</span> <span class="fn">DeepLLL</span>(b, delta)
+    bs[1], ..., bs[n], mu <- <span class="fn">gram_schmidt</span>(b)
+    k <- <span class="num">2</span>
+    <span class="kw">while</span> k <= n <span class="kw">do</span>
+        <span class="kw">for</span> j = <span class="num">1</span> to k - <span class="num">1</span> <span class="kw">do</span>
+            <span class="kw">if</span> <span class="fn">abs</span>(mu[k, j]) > <span class="num">0.5</span> <span class="kw">then</span>
+                b[k] <- b[k] - <span class="fn">round</span>(mu[k, j]) * b[j]
+                Updates GSO
+            <span class="kw">end if</span>
+        <span class="kw">end for</span>
+        C <- <span class="fn">norm</span>(b[k]) ^ <span class="num">2</span>
+        <span class="kw">while</span> i < k <span class="kw">do</span>
+            <span class="kw">if</span> C >= delta * <span class="fn">norm</span>(b[i]) ^ <span class="num">2</span> <span class="kw">then</span>
+                C <- C - mu[k, i] ^ <span class="num">2</span> * <span class="fn">norm</span>(b[i]) ^ <span class="num">2</span>
+                i <- i + <span class="num">1</span>
+            <span class="kw">else</span>
+                b[1], ..., b[n] <- <span class="fn">sigma</span>(i, k, b[1], ..., b[n]) <span class="com">/* deep-insertion*/</span>
+                Updates GSO
+                k <- <span class="fn">max</span>(i - <span class="num">1</span>, <span class="num">1</span>)
+            <span class="kw">end if</span>
+        <span class="kw">end while</span>
+        k <- k + <span class="num">1</span>
+    <span class="kw">end while</span>
+    <span class="kw">return</span> b
+<span class="kw">end function</span>
+    </code>
+        </div>
+
+        <h2 id="implementation">実装</h2>
+
+        LLL基底簡約アルゴリズムは，例えば以下の言語，ソフトウェア，ライブラリで実装されている．
+        尚，以下のリストは飽くまで一例であり，全ての実装を一覧しているわけではないことに注意されたい．
+
+        <h3>ソフトウェアでの実装</h3>
+
+        <ul>
+            <li><a href="https://github.com/satoshin-des/LatBlue">LatBlue</a>：<code>DeepLLL</code>によりDeepLLL簡約を行うことができる．</li>
+        </ul>
+
+        <h3>ライブラリでの実装</h3>
+
+        <ul>
+            <li><a href="https://github.com/fplll/fplll">fplll</a></li>
+            <li><a href="https://github.com/satoshin-des/glatl">glatl</a>：<code>DeepLLL</code>函数によりDeepLLL簡約を行うことができる．</li>
+            <li><a
+                    href="https://github.com/satoshin-des/liblat">liblat</a>：<code>deepLLL</code>函数，及び<code>L2</code>函数によりDeepLLL簡約を行うことができる．
+            </li>
+        </ul>
+
+        <section class="wiki-references-section">
+            <h2 id="reference">出典</h2>
+            <ol class="wiki-references-list">
+                <li id="ref-1">
+                    <span class="reference-text">
+                        Yasuda and Yamaguchi 2019, Theorem 1 and (2).
+                    </span>
+                    <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+            </ol>
+        </section>
+
+        <h2 id="citation">参考文献</h2>
+
+        <ul>
+            <li>
+                <span class="reference-text">
+                    Murray R. Bremner(2012).
+                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                        Applications</i>.
+                    Chapman & Hall Pure and Applied Mathematics.
+                    ISBN: 978-1439807026
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    青野良範，安田雅哉
+                    『格子暗号解読のための数学的基礎』，
+                    2019年．
+                    ISBN 978-4764905986
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    Masaya Yasuda and Junpei Yamaguchi(2019).
+                    <i>A new polynomial-time variant of LLL with deep insertions for decreasing the squared-sum of
+                        Gram-Schmidt lengths</i>.
+                    Designs, Codes, and Cryptography.
+                    doi: 10.1007/s10623-019-00634-9
+                </span>
+            </li>
+        </ul>
+    </article>
+
+    <footer></footer>
+    <script src="footer.js"></script>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>
