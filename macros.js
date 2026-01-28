@@ -14,7 +14,8 @@ window.MathJax = {
             abs: ["{\\left|{#1}\\right|}", 1],
             od: ["{\\mathrm{od}\\left(#1\\right)}", 1],
             span: ["{\\mathrm{span}_{\\R}\\left(#1\\right)}", 1],
-            dv: ["{\\frac{\\mathrm{d}}{\\mathrm{d}#1}}", 1]
+            dv: ["{\\frac{\\mathrm{d}}{\\mathrm{d}#1}}", 1],
+            rotin: ["{\\style{display: inline-block; transform: rotate(270deg)}{\\in}}"]
         }
     }
 };

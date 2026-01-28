@@ -33,5 +33,10 @@
         "title": "DeepLLL基底簡約",
         "url": "deeplll.html",
         "keywords": "DeepLLL基底簡約, LLL with deep-insertion, DeepLLL-reduction"
+    },
+    {
+        "title": "deep-insertion",
+        "url": "deep-insertion.html",
+        "keywords": "deep-insertion, deep insertion"
     }
 ]

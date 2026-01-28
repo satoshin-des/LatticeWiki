@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deep-insertion</title>
+    <style>
+        @import url(style.css);
+    </style>
+    <script src="macros.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
+    <article class="wiki-content">
+        <h1>deep-insertion</h1>
+        <p>
+            <b>deep-insertion</b>とは，基底を入れ替える操作の一つである．
+        </p>
+
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li><a href="#definition">定義</a></li>
+                <li><a href="#gso-change">deep-insertionによるGSOの変化</a></li>
+                <li><a href="#reference">出典</a></li>
+                <li><a href="#citation">参考文献</a></li>
+            </ul>
+        </div>
+
+        <h2 id="definition">定義</h2>
+        <p>
+            \(\mathscr{B}\)を\(n\)次元格子\(L\)の基底全体の集合とする．
+            このとき，インデックス\(1\le i< k\le n\)に対して，<b>deep-insertion</b>\(\sigma_{i, k}\)は
+                <div class="scroll-container">
+                    $$
+                    \begin{array}{ccccc}
+                    \sigma_{i, k} & : & \mathscr{B} & \to & \mathscr{B}\\
+                    & & \rotin & & \rotin\\
+                    & & \{\bm{b}_1,\ldots,\bm{b}_n\} & \mapsto &
+                    \{\bm{b}_1,\ldots,\bm{b}_{i-1},\bm{b}_k,\bm{b}_i,\ldots,\bm{b}_{k-1}, \bm{b}_{k+1},\ldots,\bm{b}_n\}
+                    \end{array}
+                    $$
+                </div>
+                と定義される．
+        </p>
+
+        <h2 id="gso-change">deep-insertionによるGSOの変化</h2>
+
+        <div class="math-block theorem">
+            <span class="math-label">定理（山口，安田
+                <sup id="cite_ref-1" class="reference">
+                    <a href="#ref-1">[1]</a>
+                </sup>
+                ）</span>
+            <p>
+                \(\bm{B}:=\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\)の基底とし，\(1\le i< k\le n\)に対して\(\bm{C}:=\sigma_{i,
+                    k}(\bm{B})\)とおく． 更に，\(\bm{B}\)のGSOベクトルの二乗ノルムを\(B_i=\norm{\bm{b}_i^\star}^2\)，GSO係数行列を\((\mu_{i,
+                    j})_{1\le i, j\le n}\)，また\(\bm{C}\)のGSOベクトルの二乗ノルムを\(C_i=\norm{\bm{c}_i^\star}^2\)，GSO係数行列を\((\nu_{i,
+                    j})_{1\le i, j\le n}\)とおく． このとき，\(D_\ell:=\norm{\pi_\ell(\boldsymbol{b}_k)}^2\)として $$ C_j=\left\{
+                    \!\!\!\!\!\!\begin{array}{ll} & D_i & \text{if}~j=i\\ & \displaystyle\frac{D_jB_{j-1}}{D_{j-1}} &
+                    \text{if}~i+1\le j\le k\\ & B_j & \text{else} \end{array} \right. $$ $$ \nu_{\ell, j}=\left\{
+                    \!\!\!\!\!\!\begin{array}{lll} &\displaystyle\mu_{\ell-1, j-1}-\frac{\mu_{k,
+                    j-1}}{D_j}\sum_{h=j}^{\ell-1}\mu_{k, h}\mu_{\ell-1, h}B_h & \text{if}~i+1\le j\le k,~j+1\le \ell\le
+                    k\\ &\displaystyle \mu_{\ell, j-1}-\frac{\mu_{k, j-1}}{D_j}\sum_{h=j}^k \mu_{k, h}\mu_{\ell, h}B_h &
+                    \text{if}~i+1\le j\le k,~k+1\le \ell \le n\\ &\displaystyle \frac{1}{D_i}\sum_{h=i}^{\ell-1}\mu_{k,
+                    h}\mu_{\ell-1, h}B_h & \text{if}~j=i,~i+1\le \ell \le k\\ & \displaystyle
+                    \frac{1}{D_i}\sum_{h=i}^{k}\mu_{k, h}\mu_{\ell, h}B_h & \text{if}~j=i,~k+1\le \ell\le n\\ & \mu_{k,
+                    j} & \text{if}~\ell=i,~1\le j\le i-1\\ & \mu_{\ell-1, j} & \text{if}~i+1\le \ell\le k,~1\le j\le
+                    i-1\\ & \mu_{\ell, j} & \text{else} \end{array} \right. $$ が成立する． </p>
+        </div>
+
+        <section class="wiki-references-section">
+            <h2 id="reference">出典</h2>
+            <ol class="wiki-references-list">
+                <li id="ref-1">
+                    <span class="reference-text">
+                        山口，安田 2017
+                    </span>
+                    <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                </li>
+            </ol>
+        </section>
+
+        <h2 id="citation">参考文献</h2>
+
+        <ul>
+            <li>
+                <span class="reference-text">
+                    Murray R. Bremner(2012).
+                    <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                        Applications</i>.
+                    Chapman & Hall Pure and Applied Mathematics.
+                    ISBN: 978-1439807026
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    青野良範，安田雅哉
+                    『格子暗号解読のための数学的基礎』，
+                    2019年．
+                    ISBN 978-4764905986
+                </span>
+            </li>
+            <li>
+                <span class="reference-text">
+                    山口純平，安田雅哉
+                    『DeepLLLにおけるグラムシュミットベクトル更新の高速化』，
+                    2017年，
+                    SCIS2017
+                </span>
+            </li>
+        </ul>
+    </article>
+
+    <footer></footer>
+    <script src="footer.js"></script>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>
