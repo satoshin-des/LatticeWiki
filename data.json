@@ -38,5 +38,10 @@
         "title": "deep-insertion",
         "url": "deep-insertion.html",
         "keywords": "deep-insertion, deep insertion"
+    },
+    {
+        "title": "PotLLL基底簡約",
+        "url": "potlll.html",
+        "keywords": "PotLLL基底簡約, Potential-LLL基底簡約, PotLLL簡約, Potential-LLL簡約, PotLLL-reduction, Potential-LLL-reduction"
     }
 ]
