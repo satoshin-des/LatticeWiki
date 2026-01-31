@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PotLLL基底簡約</title>
+    <style>
+        @import url(style.css);
+    </style>
+    <script src="macros.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
+    <article class="wiki-content">
+        <h1>PotLLL基底簡約</h1>
+        <p>
+            <b>PotLLL基底簡約</b>（<b>PotLLL lattice basis
+                reduction</b>）もしくは，<b>Potential-LLL基底簡約</b>とは，古典的な格子基底簡約アルゴリズムの一つである．
+            PotLLL基底簡約によって簡約された格子基底を<b>PotLLL簡約基底</b>などと呼ぶ．
+            同じく古典的な格子基底簡約アルゴリズムである<a href="deeplll.html" class="wiki-term"
+                data-desc="古典的な格子基底簡約アルゴリズムの一つ．">DeepLLL</a>の条件を弱め，多項式時間での停止性が保証されたLLL with deep-insertionである．
+        </p>
+
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li><a href="#definition">定義</a></li>
+                <ul>
+                    <li><a>PotLLL簡約条件の同値な言い換え</a></li>
+                </ul>
+                <li><a href="#property">性質</a></li>
+                <ul>
+                    <li><a href="#islll">PotLLL基底はLLL基底である</a></li>
+                    <li><a href="#upperbounds">PotLLL簡約基底の上界</a></li>
+                </ul>
+                <li><a href="#algorithm">PotLLL基底簡約アルゴリズム</a></li>
+                <li><a href="#reference">出典</a></li>
+                <li><a href="#citation">参考文献</a></li>
+            </ul>
+        </div>
+
+        <h2 id="definition">定義</h2>
+        <p>
+            \(\{\bm{b}_1,\ldots,\bm{b}_n\}\)を\(n\)次元格子\(L\subseteq \R^m\)の基底とする．
+            このとき，基底が簡約パラメタ\(\frac{1}{4} < \delta < 1\)について<b>PotLLL簡約</b>されているとは，
+                <div class="scroll-container">
+                    $$
+                    \begin{aligned}
+                    & (i) & & 1\le \forall j < \forall i\le n\left(\abs{\mu_{i, j}}\le\frac{1}{2}\right)\\ & (ii) & &
+                        1\le \forall k< \forall \ell\le n\left(\delta \Pot{\bm{B}}\le\Pot{\sigma_{k,
+                        \ell}(\bm{B})}\right) \end{aligned} $$ </div>
+                        の二条件を満足するときをいう．
+                        但し，\(\Pot{\bullet}\)は基底の<a href="potential.html" class="wiki-term"
+                            data-desc="格子基底の品質を表す指標の一つ．">ポテンシャル</a>，\(\sigma_{k, \ell}(\bullet)\)は<a
+                            href="deep-insertion.html" class="wiki-term"
+                            data-desc="基底の入れ替え操作の一つ．">deep-insertion</a>である．
+                        特に条件(i)を<b>サイズ簡約条件</b>と呼ぶ．
+        </p>
+
+        <h3>PotLLL簡約条件の同値な言い換え</h3>
+
+        <p>
+            PotLLL基底条件のうち，(ii)の式は
+        <div class="scroll-container">
+            $$
+            1\le\forall k< \forall \ell\le n\left(\Pot{\sigma_{k, \ell}(\bm{B})}=\Pot{\bm{B}} \prod_{i=k}^\ell
+                \frac{\norm{\pi_i(\bm{b}_\ell)}^2}{\norm{\pi_i(\bm{b}_i)}^2}\right) $$ </div>
+                より<sup id="cite_ref-1" class="reference"><a href="#ref-1">[1]</a></sup>，
+                <div class="scroll-container">
+                    $$
+                    1\le\forall k< \forall \ell\le n\left(\delta\le \prod_{i=k}^\ell
+                        \frac{\norm{\pi_i(\bm{b}_\ell)}^2}{\norm{\pi_i(\bm{b}_i)}^2}\right) $$ </div>
+                        と同値である．
+                        </p>
+
+                        <h2 id="property">性質</h2>
+
+                        <h3 id="islll">PotLLL基底はLLL基底である</h3>
+
+                        <div class="math-block theorem">
+                            <span class="math-label">命題（Fontein, Schneider, and Wagner 2014
+                                <sup id="cite_ref-1" class="reference">
+                                    <a href="#ref-1">[1]</a>
+                                </sup>
+                                ）
+                            </span>
+                            <p>
+                                \(\frac{1}{4}< \delta < 1\)を簡約パラメタとする． このとき，格子基底が簡約パラメタ\(\delta\)に関してPotLLL簡約されているならば，<a
+                                    href="lll.html" class="wiki-term" data-desc="古典的な格子基底簡約アルゴリズムの一つ．">LLL</a>簡約もされている．
+                            </p>
+                        </div>
+
+                        <details class="wiki-proof">
+                            <summary>証明</summary>
+                            <div class="proof">
+                                <p>
+                                    PotLLL簡約基底がサイズ簡約条件，並びにLovász条件を満足することを証明すればよい．
+                                    PotLLL基底簡約の定義から，サイズ簡約条件を満たすことは自明．
+                                    また，2つ目の条件について
+                                <div class="scroll-container">
+                                    $$
+                                    \begin{align*}
+                                    &1\le \forall k< \forall \ell\le n\left(\delta \Pot{\bm{B}}\le\Pot{\sigma_{k,
+                                        \ell}(\bm{B})}\right)\\ \iff& 1\le\forall k< \forall \ell\le n\left(\delta\le
+                                        \prod_{i=k}^\ell
+                                        \frac{\norm{\pi_i(\bm{b}_\ell)}^2}{\norm{\pi_i(\bm{b}_i)}^2}\right)\\ \implies&
+                                        1\le\forall k \le n-1\left(\delta\le \prod_{i=k}^{k+1}
+                                        \frac{\norm{\pi_i(\bm{b}_{k+1})}^2}{\norm{\pi_i(\bm{b}_i)}^2}\right)\\ \iff&
+                                        1\le\forall k \le n-1\left(\delta\le
+                                        \frac{\norm{\pi_k(\bm{b}_{k+1})}^2}{\norm{\pi_k(\bm{b}_k)}^2}\right)\\ \iff&
+                                        \mathrm{Lov\acute{a}sz条件} \end{align*} $$ </div>
+                                        </p>
+                                </div>
+                        </details>
+
+                        また，言うまでもないが，上の命題の逆は成立するとは限らない．
+
+                        <h3 id="upperbounds">PotLLL簡約基底の上界</h3>
+
+                        <div class="math-block theorem">
+                            <span class="math-label">定理（佐藤，安田
+                                <sup id="cite_ref-2" class="reference">
+                                    <a href="#ref-2">[2]</a>
+                                </sup>
+                                ）</span>
+                            <p>
+                                \(n\)次元格子\(L\)の基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)は\(\frac{1}{4}<\delta<
+                                    1\)に対してPotLLL簡約されているとし，\(\alpha:=\frac{4}{4\delta-1}\)とする． このとき <div
+                                    class="scroll-container">
+                                    $$
+                                    1\le \forall i < \forall k\le n\left(\norm{\bm{b}_i^\star}^2 \le
+                                        \left\{\alpha^{\frac{(k-i)(k-i-1)+2}{2}} \prod_{j=2}^{k-i} \left(1+\sum_{h=1}^j
+                                        \frac{\alpha^h}{4}\right)\right\}^{\frac{1}{k-i}}\norm{\bm{b}_k^\star}^2\right)
+                                        $$ </div>
+                            </p>
+                        </div>
+
+                        <details class="wiki-proof">
+                            <summary>証明</summary>
+                            <div class="proof">
+                                <p>
+                                    \(B_j=\norm{\bm{b}_k^\star}^2\)と置く．
+                                    基底がPotLLL簡約されているため，
+                                <div class="scroll-container">
+                                    \begin{align*}
+                                    \delta \prod_{j=i}^{k-1} B_j &\le \prod_{j=i}^{k-1} \left(B_k+\sum_{h=j}^{k-1}
+                                    \frac{B_h}{4}\right)\\
+                                    &\le B_k^{k-i} \prod_{j=i}^{k-1} \left(1+\sum_{h=j}^{k-1}
+                                    \frac{\alpha^{k-h}}{4}\right)\\
+                                    &=B_k^{k-i} \prod_{j=1}^{k-i} \left(1+\sum_{h=1}^{j} \frac{\alpha^{h}}{4}\right)
+                                    \end{align*}
+                                </div>
+                                が成立する．
+                                PotLLL簡約されているため，LLL簡約もされているので
+                                <div class="scroll-container">
+                                    \begin{align*}
+                                    \prod_{j=i}^{k-1} B_j&\ge \prod_{j=i}^{k-1}
+                                    (\alpha^{i-j}B_i)=\alpha^{-\frac{(k-i-1)(k-i)}{2}} B_i^{k-i}
+                                    \end{align*}
+                                </div>
+                                が成立する．
+                                よって，
+                                <div class="scroll-container">
+                                    \begin{align*}
+                                    \delta B_i^{k-i}\le B_k^{k-i} \alpha^{\frac{(k-i-1)(k-i)}{2}}\prod_{j=1}^{k-i}
+                                    \left(1+\sum_{h=1}^{j} \frac{\alpha^{h}}{4}\right)
+                                    \end{align*}
+                                </div>
+                                を得る．
+                                従って，\(\frac{1}{\delta}\left(1+\frac{\alpha}{4}\right)=\alpha\)であるので
+                                \begin{align*}
+                                B_i^{k-i}\le B_k^{k-i} \alpha^{\frac{(k-i-1)(k-i)+2}{2}}\prod_{j=2}^{k-i}
+                                \left(1+\sum_{h=1}^{j} \frac{\alpha^{h}}{4}\right)
+                                \end{align*}
+                                となり，定理を得る．
+                                </p>
+                            </div>
+                        </details>
+
+                        佐藤-安田の定理<sup id="cite_ref-2" class="reference"><a
+                                href="#ref-2">[2]</a></sup>から，次の系を得ることが簡単に確かめられる．
+
+                        <div class="math-block theorem">
+                            <span class="math-label">系</span>
+                            <p>
+                                \(n\)次元格子\(L\)の基底\(\{\bm{b}_1,\ldots,\bm{b}_n\}\)は\(\frac{1}{4}<\delta<
+                                    1\)に対してPotLLL簡約されているとし，\(\alpha:=\frac{4}{4\delta-1}\)とする． このとき <div
+                                    class="scroll-container">
+                                    $$
+                                    \begin{aligned}
+                                    (i) & & \norm{\bm{b}_1} \le \alpha^{\frac{H_{n-1}}{2n}+\frac{(n-1)(n-2)}{8n}}
+                                    \prod_{j=2}^{n-1} \left(1+\sum_{h=1}^j
+                                    \frac{\alpha^h}{4}\right)^{\frac{H_{n-1}-H_{j-1}}{n}} \vol{L}^{\frac{1}{n}}\\
+                                    (ii) & & \prod_{i=1}^n \norm{\bm{b}_i}\le \vol{L} \prod_{i=1}^n
+                                    \left[1+\frac{1}{4}\sum_{j=1}^{i-1}\left\{\alpha^{\frac{(i-j)(i-j-1)+2}{2}}
+                                    \prod_{\ell=2}^{i-j}
+                                    \left(1+\sum_{h=1}^{\ell}\frac{\alpha^h}{4}\right)\right\}^{\frac{1}{i-j}}\right]^{\frac{1}{2}}
+                                    \end{aligned}
+                                    $$
+                        </div>
+                        </p>
+                </div>
+
+                <details class="wiki-proof">
+                    <summary>証明</summary>
+                    <div class="proof">
+                        <p>
+                            (i) 佐藤-安田の定理<sup id="cite_ref-2" class="reference"><a href="#ref-2">[2]</a></sup>から
+                        <div class="scroll-container">
+                            $$
+                            2\le \forall k \le n\left(\norm{\bm{b}_1}^2 \le \left\{\alpha^{\frac{(k-1)(k-2)+2}{2}}
+                            \prod_{j=2}^{k-1} \left(1+\sum_{h=1}^j
+                            \frac{\alpha^h}{4}\right)\right\}^{\frac{1}{k-1}}\norm{\bm{b}_k^\star}^2\right)
+                            $$
+                        </div>
+                        が成立する．
+                        これを，全ての\(2\le k\le n\)で掛け合わせれば
+                        <div class="scroll-container">
+                            \begin{align*}
+                            \norm{\bm{b}_1}^{2(n-1)} &\le \prod_{k=2}^n\left[\left\{\alpha^{\frac{(k-1)(k-2)+2}{2}}
+                            \prod_{j=2}^{k-1} \left(1+\sum_{h=1}^j
+                            \frac{\alpha^h}{4}\right)\right\}^{\frac{1}{k-1}}\norm{\bm{b}_k^\star}^2\right]\\
+                            &=\prod_{k=2}^n\alpha ^{\frac{1}{k-1}} \prod_{k=2}^n\alpha^{\frac{k-2}{2}} \prod_{k=2}^n
+                            \prod_{j=2}^{k-1} \left(1+\sum_{h=1}^j \frac{\alpha^h}{4}\right)^{\frac{1}{k-1}}
+                            \prod_{k=2}^n \norm{\bm{b}_k^\star}^2\\
+                            &=\alpha^{H_{n-1}} \alpha^{\frac{(n-1)(n-2)}{4}} \prod_{j=2}^{n-1} \prod_{k=j+1}^n
+                            \left(1+\sum_{h=1}^j \frac{\alpha^h}{4}\right)^{\frac{1}{k-1}}\prod_{k=2}^n
+                            \norm{\bm{b}_k^\star}^2.
+                            \end{align*}
+                        </div>
+                        この式の両辺に\(\norm{\bm{b}_1}^2\)を乗ずれば
+                        <div class="scroll-container">
+                            \begin{align*}
+                            &\norm{\bm{b}_1}^{2n} \le \alpha^{H_{n-1}} \alpha^{\frac{(n-1)(n-2)}{4}} \prod_{j=2}^{n-1}
+                            \prod_{k=j+1}^n \left(1+\sum_{h=1}^j \frac{\alpha^h}{4}\right)^{\frac{1}{k-1}} \prod_{k=1}^n
+                            \norm{\bm{b}_k^\star}^2\\
+                            \iff& \norm{\bm{b}_1}^{2n} \le \alpha^{H_{n-1}+\frac{(n-1)(n-2)}{4}} \prod_{j=2}^{n-1}
+                            \left(1+\sum_{h=1}^j \frac{\alpha^h}{4}\right)^{H_{n-1}-H_{j-1}} \vol{L}^2\\
+                            \iff& \norm{\bm{b}_1} \le \alpha^{\frac{H_{n-1}}{2n}+\frac{(n-1)(n-2)}{8n}}
+                            \prod_{j=2}^{n-1} \left(1+\sum_{h=1}^j \frac{\alpha^h}{4}\right)^{\frac{H_{n-1}-H_{j-1}}{n}}
+                            \vol{L}^{\frac{1}{n}}
+                            \end{align*}
+                        </div>
+                        を得る．<br>
+                        (ii) 同様に，任意の\(1\le i\le n\)に対して，
+                        <div class="scroll-container">
+                            \begin{align*}
+                            \norm{\bm{b}_i}^2&\le
+                            \norm{\bm{b}_i^\star}^2+\frac{1}{4}\sum_{j=1}^{i-1}\norm{\bm{b}_j^\star}^2\\
+                            &\le \left[1+\frac{1}{4}\sum_{j=1}^{i-1}\left\{\alpha^{\frac{(i-j)(i-j-1)+2}{2}}
+                            \prod_{\ell=2}^{i-j}
+                            \left(1+\sum_{h=1}^{\ell}\frac{\alpha^h}{4}\right)\right\}^{\frac{1}{i-j}}\right]\norm{\bm{b}_i^\star}^2
+                            \end{align*}
+                        </div>
+                        が成立する．
+                        従って，これを全ての\(1\le i\le n\)で掛け合わせれば，
+                        <div class="scroll-container">
+                            \begin{align*}
+                            \prod_{i=1}^n \norm{\bm{b}_i}^2&\le \prod_{i=1}^n
+                            \left[1+\frac{1}{4}\sum_{j=1}^{i-1}\left\{\alpha^{\frac{(i-j)(i-j-1)+2}{2}}
+                            \prod_{\ell=2}^{i-j}
+                            \left(1+\sum_{h=1}^{\ell}\frac{\alpha^h}{4}\right)\right\}^{\frac{1}{i-j}}\right]\norm{\bm{b}_i^\star}^2\\
+                            &=\prod_{i=1}^n \left[1+\frac{1}{4}\sum_{j=1}^{i-1}\left\{\alpha^{\frac{(i-j)(i-j-1)+2}{2}}
+                            \prod_{\ell=2}^{i-j}
+                            \left(1+\sum_{h=1}^{\ell}\frac{\alpha^h}{4}\right)\right\}^{\frac{1}{i-j}}\right] \vol{L}^2
+                            \end{align*}
+                        </div>
+                        を得る．
+                        </p>
+                    </div>
+                </details>
+
+                <h3>直交性欠陥の上界</h3>
+
+                基底の<a href="orthogonality-defect.html" class="wiki-term" data-desc="格子基底の品質を表す指標の一つ．">直交性欠陥</a>は，格子の<a
+                    href="volume.html" class="wiki-term" data-desc="格子の不変量の一つ．">体積</a>
+                \(\vol{L}\)を用いて
+                $$
+                \od{\bm{b}_1,\ldots,\bm{b}_n}:=\frac{\prod_{i=1}^n \norm{\bm{b}_i}}{\vol{L}}
+                $$
+                と定義される量であった．
+                ここに，上で証明した系を代入すれば，\(n\)次元格子\(L\)のPotLLL簡約基底\(\bm{b}_1,\ldots,\bm{b}_n\)は，簡約パラメタ\(\delta\)に対して，\(\alpha:=\frac{4}{4\delta-1}\)と定めると
+
+                <div class="scroll-container">
+                    $$
+                    \od{\bm{b}_1,\ldots,\bm{b}_n}\le \prod_{i=1}^n
+                    \left[1+\frac{1}{4}\sum_{j=1}^{i-1}\left\{\alpha^{\frac{(i-j)(i-j-1)+2}{2}}
+                    \prod_{\ell=2}^{i-j}
+                    \left(1+\sum_{h=1}^{\ell}\frac{\alpha^h}{4}\right)\right\}^{\frac{1}{i-j}}\right]^{\frac{1}{2}}
+                    $$
+                </div>
+
+                という上界を有することがわかる．
+
+                <h2 id="algorithm">PotLLL基底簡約アルゴリズム</h2>
+
+                <div class="algorithm-box">
+                    <span class="algorithm-caption">アルゴリズム 1: PotLLL基底簡約アルゴリズム
+                        <sup id="cite_ref-3" class="reference">
+                            <a href="#ref-3">[3]</a>
+                        </sup>
+                    </span>
+                    <code>
+<span class="kw">Input:</span> 基底 b=[b[1],..., b[n]], 簡約パラメタ delta
+<span class="kw">Output:</span> PotLLL簡約基底 b
+
+<span class="kw">function</span> <span class="fn">PotLLL</span>(b, delta)
+    bs[1], ..., bs[n], mu <- <span class="fn">gram_schmidt</span>(b)
+    k <- <span class="num">1</span>
+    <span class="kw">while</span> k <= n <span class="kw">do</span>
+        <span class="kw">for</span> j = <span class="num">1</span> to k - <span class="num">1</span> <span class="kw">do</span>
+            <span class="kw">if</span> <span class="fn">abs</span>(mu[k, j]) > <span class="num">0.5</span> <span class="kw">then</span>
+                b[k] <- b[k] - <span class="fn">round</span>(mu[k, j]) * b[j]
+                Updates GSO
+            <span class="kw">end if</span>
+        <span class="kw">end for</span>
+        P <- <span class="num">1</span>
+        Pmin <- <span class="num">1</span>
+        <span class="kw">for</span> j = k - <span class="num">1</span> downto <spna class="num">1</spna> <span class="kw">do</span>
+            S <- 0
+            <span class="kw">for</span> l = j to k - <spna class="num">1</spna> <span class="kw">do</span>
+                S <- S + mu[k, l] ^ 2 * <span class="fn">norm</span>(bs[l]) ^ 2
+            <span class="kw">end for</span>
+            P <- P * (<span class="fn">norm</span>(bs[k]) ^ 2 + S) / <span class="fn">norm</span>(bs[j]) ^ 2
+            <span class="kw">if</span> P < Pmin <span class="kw">then</span>
+                i <- j
+                Pmin <- P
+            <span class="kw">end if</span>
+        <span class="kw">end for</span>
+        <span class="kw">if</span> delta > Pmin <span class="kw">then</span>
+            b[1], ..., b[n] <- <span class="fn">sigma</span>(i, k, b[1], ..., b[n]) <span class="com">/* deep-insertion*/</span>
+            Updates GSO
+            k <- i
+        <span class="kw">else</span>
+            k <- k + <span class="num">1</span>
+        <span class="kw">end if</span>
+    <span class="kw">end while</span>
+    <span class="kw">return</span> b
+<span class="kw">end function</span>
+    </code>
+                </div>
+
+
+                <section class="wiki-references-section">
+                    <h2 id="reference">出典</h2>
+                    <ol class="wiki-references-list">
+                        <li id="ref-1">
+                            <span class="reference-text">
+                                Fontein, Schneider, and Wagner 2014, Lemma 1.
+                            </span>
+                            <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-2">
+                            <span class="reference-text">
+                                佐藤，安田 2026，系4.6
+                            </span>
+                            <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-3">
+                            <span class="reference-text">
+                                Fontein, Schneider, and Wagner 2014, Algorithm 2.
+                            </span>
+                            <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                    </ol>
+                </section>
+
+                <h2 id="citation">参考文献</h2>
+
+                <ul>
+                    <li>
+                        <span class="reference-text">
+                            Murray R. Bremner(2012).
+                            <i>Lattice Basis Reduction An Introduction to the LLL Algorithm and Its
+                                Applications</i>.
+                            Chapman & Hall Pure and Applied Mathematics.
+                            ISBN: 978-1439807026
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            青野良範，安田雅哉
+                            『格子暗号解読のための数学的基礎』，
+                            2019年．
+                            ISBN 978-4764905986
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            Felix Fontein, Michael Schneider, and Urs Wagner (2014).
+                            <i>PotLLL: a polynomial time version of LLL with deep insertions</i>.
+                            Designs, Codes, and Cryptography.
+                            doi: 10.1007/s10623-014-9918-8
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            佐藤新，安田雅哉
+                            『重み付きポテンシャルを用いた\(\bm{w}\)-PotBKZ基底簡約の提案』，
+                            2026年，
+                            SCIS2026
+                        </span>
+                    </li>
+                </ul>
+    </article>
+
+    <footer></footer>
+    <script src="footer.js"></script>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>
