@@ -4,7 +4,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master # mainブランチにpushされた時だけ実行（masterの場合は変更してください）
+      - master
 
 permissions:
   contents: read
