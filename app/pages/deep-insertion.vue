@@ -4,6 +4,7 @@ import SubSection from '~/components/SubSection.vue';
 import Equation from '~/components/Equation.vue';
 import WikiArticle from '~/components/WikiArticle.vue';
 import Citation from '~/components/Citation.vue';
+import Theorem from '~/components/Theorem.vue';
 </script>
 
 <template>
@@ -29,12 +30,7 @@ import Citation from '~/components/Citation.vue';
 
         <SubSection id="gso-change">deep-insertionによるGSOの変化</SubSection>
 
-        <div class="math-block theorem">
-            <span class="math-label">定理（山口，安田
-                <sup id="cite_ref-1" class="reference">
-                    <a href="#ref-1">[1]</a>
-                </sup>
-                ）</span>
+        <Theorem label="定理（山口，安田<sup id='cite_ref-1' class='reference'><a href='#ref-1'>[1]</a></sup>）">
             <p>
                 <Equation :f="'\\bm{B}:=\\{\\bm{b}_1,\\ldots,\\bm{b}_n\\}'" :inline="true" />を
                 <Equation :f="'n'" :inline="true" />次元格子
@@ -58,7 +54,7 @@ import Citation from '~/components/Citation.vue';
                     :inline="false" />
                 が成立する．
             </p>
-        </div>
+        </Theorem>
 
         <section class="wiki-references-section">
             <SubSection id="reference">出典</SubSection>
