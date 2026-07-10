@@ -30,7 +30,7 @@ import Theorem from '~/components/Theorem.vue';
 
         <SubSection id="gso-change">deep-insertionによるGSOの変化</SubSection>
 
-        <Theorem label="定理（山口，安田<sup id='cite_ref-1' class='reference'><a href='#ref-1'>[1]</a></sup>）">
+        <Theorem label="定理（山口，安田）">
             <p>
                 <Equation :f="'\\bm{B}:=\\{\\bm{b}_1,\\ldots,\\bm{b}_n\\}'" :inline="true" />を
                 <Equation :f="'n'" :inline="true" />次元格子
@@ -55,18 +55,6 @@ import Theorem from '~/components/Theorem.vue';
                 が成立する．
             </p>
         </Theorem>
-
-        <section class="wiki-references-section">
-            <SubSection id="reference">出典</SubSection>
-            <ol class="wiki-references-list">
-                <li id="ref-1">
-                    <span class="reference-text">
-                        山口，安田 2017
-                    </span>
-                    <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
-                </li>
-            </ol>
-        </section>
 
         <SubSection id="citation">参考文献</SubSection>
 
