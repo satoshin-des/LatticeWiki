@@ -18,7 +18,7 @@ import SubSection from '~/components/SubSection.vue';
         <li><a href="volume.html">体積</a></li>
         <li><a href="orthogonality-defect.html">直交性欠陥</a></li>
         <li><a href="potential.html">ポテンシャル</a></li>
-        <li><NuxtLink to="/gsa">deep-insertion</NuxtLink></li>
+        <li><NuxtLink to="/deep-insertion">deep-insertion</NuxtLink></li>
         <li><a href="deeplll.html">DeepLLL基底簡約</a></li>
         <li><a href="hermite-const.html">Hermiteの定数</a></li>
         <li><NuxtLink to="/lll">LLL基底簡約</NuxtLink></li>
