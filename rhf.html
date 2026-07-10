@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Hermite Factor</title>
+    <style>
+        @import url(style.css);
+    </style>
+    <script src="macros.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="search-wrapper">
+        <div class="search-input-group">
+            <input type="text" id="wiki-search-input" placeholder="ページを検索..." autocomplete="off">
+            <button id="wiki-search-button">検索</button>
+        </div>
+
+        <div id="search-results-container"></div>
+    </div>
+    <article class="wiki-content">
+        <h1>Roor Hermite Factor</h1>
+        <p>
+            <b>root Hermite factor</b>もしくは<b>RHF</b>とは，格子基底の品質を表す指標の一つである．
+        </p>
+
+        <div class="wiki-toc">
+            <strong>目次</strong>
+            <ul>
+                <li><a href="#definition">定義</a></li>
+                <li><a href="#boundedness">Hermiteの定数の有界性</a></li>
+                <li><a href="#known">既知のHermiteの定数の値</a></li>
+                <li><a href="#upper">Hermiteの定数の上界</a></li>
+                <li><a href="#reference">出典</a></li>
+                <li><a href="#citation">参考文献</a></li>
+            </ul>
+        </div>
+
+        <h2 id="definition">定義</h2>
+        <p>
+            \(\bm{b}_1,\ldots, \bm{b}_n\)を\(n\)次元格子\(L\in \R^m\)の基底とする．
+            このとき，基底の<b>root Hermite factor</b>は
+            $$
+            \rhf{\bm{b}_1,\ldots, \bm{b}_n}\coloneqq\left\{\frac{\norm{\bm{b}_1}}{\vol{L}^{\frac{1}{n}}}\right\}^{\frac{1}{n}}
+            $$
+            と定義される．
+        </p>
+
+        <h2 id="boundedness">Hermiteの定数の有界性</h2>
+
+        <div class="math-block theorem">
+            <span class="math-label">定理（Minkowski）</span>
+            <p>
+                任意の\(n\)次元格子\(L\subseteq \R^m\)に対して，
+                $$
+                \lambda_1(L)< \sqrt{n}\vol{L}^{\frac{1}{n}} $$ が成立する． </p>
+        </div>
+
+        <details class="wiki-proof">
+            <summary>証明</summary>
+            <div class="proof">
+                <p>
+                    \(\mathscr{B}(\bm{x}, r)\)を\(\bm{x}\in \R^m\)を中心とする半径\(r>0\)の開球とし，集合\(S\)を
+                <div class="scroll-container">
+                    $$
+                    S:=\mathscr{B}\left(\bm{0}, \sqrt{n} \vol{L}^{\frac{1}{n}}\right)\cap \span{L}
+                    $$
+                </div>
+                とする．
+                このとき，\(S\)は明らかに原点対称な凸集合である．
+                また，\(S\)は一辺が\(2\vol{L}^{\frac{1}{n}}\)の\(n\)次元超立方体の各頂点以外を含むので，体積は\(2^n \vol{L}\)よりも大きい．
+                従って，Minkowskiの凸体定理から
+                $$
+                \lambda_1(L)\le \sqrt{n} \vol{L}^{\frac{1}{n}}
+                $$
+                が従う．
+                </p>
+            </div>
+        </details>
+
+        Minkowskiの定理から，
+        <div class="scroll-container">
+            $$
+            \forall L\in \mathscr{L}_n \left(\frac{\lambda_1(L)^2}{\vol{L}^{\frac{2}{n}}}< n\right) $$ </div>
+                が従い，即ち\(\gamma_n\)が上に有界であることがわかる．
+
+                <h2 id="known">既知のHermiteの定数の値</h2>
+
+                <p>
+                    いくつかの小さな整数についてはHermiteの定数の値が知られている<sup id="cite_ref-1" class="reference"><a
+                            href="#ref-1">[1]</a></sup>：<br>
+                    \(\displaystyle \gamma_1=1\)<br>
+                    \(\displaystyle \gamma_2=\frac{2}{\sqrt{3}}=1.154700...\)<br>
+                    \(\displaystyle \gamma_3=\sqrt[3]{2}=1.259921...\)<br>
+                    \(\displaystyle \gamma_4=\sqrt{2}=1.414213...\)<br>
+                    \(\displaystyle \gamma_5=\sqrt[5]{8}=1.515716...\)<br>
+                    \(\displaystyle \gamma_6=\sqrt[6]{\frac{64}{3}}=1.665366...\)<br>
+                    \(\displaystyle \gamma_7=\sqrt[7]{64}=1.811447...\)<br>
+                    \(\displaystyle \gamma_8=2\)<br>
+                    \(\displaystyle \gamma_{24}=4\)
+                </p>
+
+                <h2 id="upper">Hermiteの定数の上界</h2>
+
+                <div class="table-wrapper">
+                    <table class="wiki-table">
+                        <thead>
+                            <tr>
+                                <th>論文</th>
+                                <th>Hermiteの定数の上界</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Minkowski</td>
+                                <td>\(4\left\{\frac{\pi^{\frac{n}{2}}}{\Gamma\left(1+\frac{n}{2}\right)}\right\}^{-\frac{2}{n}}\)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Milnor and Husemoller(1973)<sup id="cite_ref-6" class="reference"><a
+                                            href="#ref-6">[6]</a></sup></td>
+                                <td>\(\frac{n}{4}+1\)</td>
+                            </tr>
+                            <tr>
+                                <td>Wen and Chang(2018)<sup id="cite_ref-2" class="reference"><a
+                                            href="#ref-2">[2]</a></sup>
+                                </td>
+                                <td>\(\frac{n}{8}+\frac{6}{5}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Wen, Chang, and Weng(2019)<sup id="cite_ref-5" class="reference"><a
+                                            href="#ref-5">[5]</a></sup></td>
+                                <td>\(\frac{n}{8.5}+2\)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <details class="wiki-proof">
+                    <summary>Wen and Chang(2018)による上界評価の証明</summary>
+                    <div class="proof">
+                        <p>
+                            Minkowskiの定理から，
+                        <div class="scroll-container">
+                            $$
+                            \gamma_n \le 4\left\{
+                            \frac{\pi^{\frac{n}{2}}}{\Gamma\left(1+\frac{n}{2}\right)}\right\}^{-\frac{2}{n}}
+                            $$
+                        </div>
+                        であったので，
+                        <div class="scroll-container">
+                            $$
+                            \begin{aligned}
+                            &4\left\{
+                            \frac{\pi^{\frac{n}{2}}}{\Gamma\left(1+\frac{n}{2}\right)}\right\}^{-\frac{2}{n}} <
+                                \frac{n}{8}+\frac{6}{5}\\ \iff & \Gamma\left(2+\frac{n}{2}\right)^2 <
+                                \left\{\frac{\pi(n+9.6)}{16}\right\}^n \end{aligned} $$ </div>
+                                が示せればよい．
+                                ここで，
+                                <div class="scroll-container">
+                                    $$
+                                    \forall x\ge 1 \left(\Gamma(1+x)< x^x
+                                        e^{-x}\sqrt{2\pi\left(x+\frac{e^2}{2\pi}-1\right)}\right) $$ </div>
+                                        であるので<sup id="cite_ref-3" class="reference"><a href="#ref-3">[3]</a></sup>，示すべきは
+                                        <div class="scroll-container">
+                                            $$
+                                            \forall n\in \N\left(\left(1+\frac{n}{2}\right)^2
+                                            \left(\frac{n}{2}\right)^n e^{-n}\left(\pi n+e^2-2\pi \right)<
+                                                \left(\frac{\pi (n+9.6)}{16} \right)^n\right) $$ </div>
+                                                に移る．
+                                                従って，
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \forall t\in \{1, 1.5, 2,
+                                                    \ldots\}\left(\frac{\left\{\frac{e\pi}{8}\left(1+\frac{t}{4.8}\right)\right\}^{2t}}{(1+t)^2
+                                                    (2\pi t+e^2-2\pi)} > 1\right)
+                                                    $$
+                                                </div>
+                                                を示せばよい．
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \phi(t):=\frac{\left\{\frac{e\pi}{8}\left(1+\frac{t}{4.8}\right)\right\}^{2t}}{(1+t)^2
+                                                    (2\pi t+e^2-2\pi)}
+                                                    $$
+                                                </div>
+                                                と置くと，直接代入することにより，\(t\le 15\)の場合に成立することがわかる．
+                                                従って，\(\psi(t):=\log \phi(t)\)が\(t \ge 15\)で単調増加であることが示せれば十分である．
+                                                \(\alpha := \frac{e^2}{2\pi}-1=0.176004...\)とすると，
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \psi(t)=2t \log \frac{e\pi}{8}+2t
+                                                    \log\left(1+\frac{4.8}{t}\right)-2 \log(t+1)-\log(2\pi
+                                                    (t+\alpha))
+                                                    $$
+                                                </div>
+                                                であり，この\(t\)による微分は
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \dv{t}\psi(t)=2\log\frac{e\pi}{8}+2\log{\left(1+\frac{4.8}{t}\right)}-\frac{9.6}{t+4.8}-\frac{2}{t+1}-\frac{1}{t+\alpha}
+                                                    $$
+                                                </div>
+                                                である．
+                                                ここで，
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \forall x\ge 0\left( \log(1+x)\ge \frac{2x}{2+x}\right)
+                                                    $$
+                                                </div>
+                                                であるので<sup id="cite_ref-4" class="reference"><a
+                                                        href="#ref-4">[4]</a></sup>，
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \dv{t}\psi(t)\ge
+                                                    2\log\frac{e\pi}{8}+\frac{9.6}{t+2.4}-\frac{9.6}{t+4.8}-\frac{2}{t+1}-\frac{1}{t+\alpha}
+                                                    $$
+                                                </div>
+                                                となる．
+                                                ここで，
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \rho(t):=2\log\frac{e\pi}{8}+\frac{9.6}{t+2.4}-\frac{9.6}{t+4.8}-\frac{2}{t+1}-\frac{1}{t+\alpha}
+                                                    $$
+                                                </div>
+                                                とおくと，\(t\ge 0\)で\(\left.\dv{t}\psi(t)\right|_{t=15}\ge
+                                                \rho(15)=0.006558...>0\)である．
+                                                よって，\(\rho(t)\)が\(t\ge 15\)で単調増加であることが示せれば十分である．
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \begin{aligned}
+                                                    \dv{t}\rho(t)&=-\frac{9.6}{(t+2.4)^2}+\frac{9.6}{(t+4.8)^2}+\frac{2}{(t+1)^2}+\frac{1}{(t+\alpha)^2}\\
+                                                    &>-\frac{9.6}{(t+2.4)^2}+\frac{9.6}{(t+4.8)^2}+\frac{2}{(t+2.4)^2}+\frac{1}{(t+2.4)^2}\\
+                                                    &=\frac{1}{(t+2.4)^2}\left\{9.6\frac{(t+2.4)^2}{(t+4.8)^2}-6.6\right\}
+                                                    \end{aligned}
+                                                    $$
+                                                </div>
+                                                であり，
+                                                <div class="scroll-container">
+                                                    $$
+                                                    \dv{t}\left[9.6\frac{(t+2.4)^2}{(t+4.8)^2}-6.6\right]=\frac{46.08t+110.592}{(t+4.8)^3}>0\quad
+                                                    (t\ge 0)
+                                                    $$
+                                                </div>
+                                                より，\(9.6\frac{(t+2.4)^2}{(t+4.8)^2}-6.6\)は\(t\ge
+                                                0\)で単調増加且つ\(t=15\)のとき\(0.813774...>0\)なので，\(t\ge
+                                                15\)で\(\dv{t}\rho(t)>0\)である．
+                                                以上より，定理を得る．
+                                                </p>
+                                        </div>
+                </details>
+
+                <section class="wiki-references-section">
+                    <h2 id="reference">出典</h2>
+                    <ol class="wiki-references-list">
+                        <li id="ref-1">
+                            <span class="reference-text">
+                                青野，安田 2019
+                            </span>
+                            <a href="#cite_ref-1" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-2">
+                            <span class="reference-text">
+                                Wen, and Chang 2018, Theorem. 1
+                            </span>
+                            <a href="#cite_ref-2" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-3">
+                            <span class="reference-text">
+                                Batir 2008, Theorem. 1.6
+                            </span>
+                            <a href="#cite_ref-3" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-4">
+                            <span class="reference-text">
+                                Topsøe 2004, pp. 2
+                            </span>
+                            <a href="#cite_ref-4" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-5">
+                            <span class="reference-text">
+                                Wen, Chang, and Weng 2019, Theorem. 1
+                            </span>
+                            <a href="#cite_ref-5" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                        <li id="ref-6">
+                            <span class="reference-text">
+                                Milnor and Husemoller 1973, pp. 17
+                            </span>
+                            <a href="#cite_ref-6" class="back-to-text" title="本文に戻る">^</a>
+                        </li>
+                    </ol>
+                </section>
+
+                <h2 id="citation">参考文献</h2>
+
+                <ul>
+                    <li>
+                        <span class="reference-text">
+                            青野良範，安田雅哉
+                            『格子暗号解読のための数学的基礎』，
+                            2019年．
+                            ISBN 978-4764905986
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            Jinming Wen and Xiao-Wen Chang(2018).
+                            <i>On the KZ Reduction</i>.
+                            IEEE Transactions on Information Theory.
+                            doi: 10.48550/arXiv.1702.08152
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            Necdet Batir(2008).
+                            <i>Inequalities for the gamma function</i>.
+                            Archiv der Mathematik.
+                            doi: 10.1007/s00013-008-2856-9
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            Flemming Topsøe(2004).
+                            <i>Some bounds for the logarithmic function</i>.
+                            Research Group in Mathematical Inequalities and Applications (RGMIA).
+                            url: <a
+                                href="https://rgmia.org/papers/v7n2/pade.pdf">https://rgmia.org/papers/v7n2/pade.pdf</a>（2026年1月24日閲覧）
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            Jinming Wen, Xiao-Wen Chang, Jian Weng(2019).
+                            <i>Improved Upper Bounds on the Hermite and KZ Constants</i>.
+                            doi: 10.48550/arXiv.1904.09395
+                        </span>
+                    </li>
+                    <li>
+                        <span class="reference-text">
+                            John Milnor and Dale Husemoller(1973).
+                            <i>Symmetric bilinear forms</i>.
+                            ISIT 2019.
+                            doi: 10.1007/978-3-642-88330-9
+                        </span>
+                    </li>
+                </ul>
+    </article>
+
+    <footer></footer>
+    <script src="footer.js"></script>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+
+</html>
