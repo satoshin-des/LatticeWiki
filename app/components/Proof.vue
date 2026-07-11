@@ -1,6 +1,15 @@
+<script setup>
+defineProps({
+    label: {
+        type: String,
+        required: false
+    }
+});
+</script>
+
 <template>
     <details class="wiki-proof">
-        <summary>証明</summary>
+        <summary>証明{{ label }}</summary>
         <div class="proof">
             <slot />
         </div>
