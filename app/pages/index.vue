@@ -16,7 +16,7 @@ import SubSection from '~/components/SubSection.vue';
     <ul>
         <li><NuxtLink to="/gsa">幾何級数仮定</NuxtLink></li>
         <li><a href="volume.html">体積</a></li>
-        <li><a href="orthogonality-defect.html">直交性欠陥</a></li>
+        <li><NuxtLink to="orthogonality-defect">直交性欠陥</NuxtLink></li>
         <li><a href="potential.html">ポテンシャル</a></li>
         <li><NuxtLink to="/deep-insertion">deep-insertion</NuxtLink></li>
         <li><a href="deeplll.html">DeepLLL基底簡約</a></li>
